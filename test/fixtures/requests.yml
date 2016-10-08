@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  professional_id: 1
+  user_id: 1
+  status: MyString
+  appointment_time: MyString
+  appointment_details: MyString
+
+two:
+  professional_id: 1
+  user_id: 1
+  status: MyString
+  appointment_time: MyString
+  appointment_details: MyString
