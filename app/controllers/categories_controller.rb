@@ -7,7 +7,12 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
-  # admin only
+  # is_authenticated_admin access
+  def new
+    @category = Category.new
+  end
+
+  # is_authenticated_admin access
   def create
     @category = Category.new(category_params)
 
@@ -18,17 +23,12 @@ class CategoriesController < ApplicationController
   	end
   end
 
-  # admin only
-  def new
-    @category = Category.new
-  end
-
-  # admin only
+  # is_authenticated_admin access
   def edit
     @category = Category.find(params[:id])
   end
 
-  # admin only
+  # is_authenticated_admin access
   def update
     @category = Category.find(params[:id])
 
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
 
   end
 
-  # admin only
+  # is_authenticated_admin access
   def destroy
     Category.find(params[:id]).delete
     redirect_to categories_url
