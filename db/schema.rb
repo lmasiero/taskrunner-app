@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20161008023022) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "category_id"
-    t.integer  "mobile_number"
+    t.string   "mobile_number"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20161008023022) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "mobile_number"
+    t.string   "mobile_number"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+  def signup
+    render('new')
+  end
+
+
   def index
     @users = User.all
   end
