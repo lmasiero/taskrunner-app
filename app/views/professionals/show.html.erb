@@ -1,2 +1,29 @@
-<h1>Professionals#show</h1>
-<p>Find me in app/views/professionals/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @professional.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @professional.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @professional.password_digest %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @professional.category_id %>
+</p>
+
+<p>
+  <strong>Mobile number:</strong>
+  <%= @professional.mobile_number %>
+</p>
+
+<%= link_to 'Edit', edit_professional_path(@professional) %> |
+<%= link_to 'Back', professionals_path %>

@@ -1,2 +1,5 @@
-<h1>Professionals#new</h1>
-<p>Find me in app/views/professionals/new.html.erb</p>
+<h1>New Professional</h1>
+
+<%= render 'form', professional: @professional %>
+
+<%= link_to 'Back', professionals_path %>
