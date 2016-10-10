@@ -1,18 +1,18 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 
 
 @import "semantic-ui";
@@ -30,197 +30,204 @@
   color: white !important;
 }
 
- .hidden.menu {
- display: none;
- }
- .masthead.segment {
- min-height: 700px;
- padding: 1em 0em;
- }
- .masthead .logo.item img {
- margin-right: 1em;
- }
- .masthead .ui.menu .ui.button {
- margin-left: 0.5em;
- }
- .masthead h1.ui.header {
- margin-top: 3em;
- margin-bottom: 0em;
- font-size: 4em;
- font-weight: normal;
- }
- .masthead h2 {
- font-size: 1.7em;
- font-weight: normal;
- }
+.hidden.menu {
+  display: none;
+}
+.masthead.segment {
+  min-height: 700px;
+  padding: 1em 0em;
+}
+.masthead .logo.item img {
+  margin-right: 1em;
+}
+.masthead .ui.menu .ui.button {
+  margin-left: 0.5em;
+}
+.masthead h1.ui.header {
+  margin-top: 3em;
+  margin-bottom: 0em;
+  font-size: 4em;
+  font-weight: normal;
+}
+.masthead h2 {
+  font-size: 1.7em;
+  font-weight: normal;
+}
 
- .ui.vertical.stripe {
- padding: 8em 0em;
- }
- .ui.vertical.stripe h3 {
- font-size: 2em;
- }
- .ui.vertical.stripe .button + h3,
- .ui.vertical.stripe p + h3 {
- margin-top: 3em;
- }
- .ui.vertical.stripe .floated.image {
- clear: both;
- }
- .ui.vertical.stripe p {
- font-size: 1.33em;
- }
- .ui.vertical.stripe .horizontal.divider {
- margin: 3em 0em;
- }
+.ui.vertical.stripe {
+  padding: 8em 0em;
+}
+.ui.vertical.stripe h3 {
+  font-size: 2em;
+}
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+  margin-top: 3em;
+}
+.ui.vertical.stripe .floated.image {
+  clear: both;
+}
+.ui.vertical.stripe p {
+  font-size: 1.33em;
+}
+.ui.vertical.stripe .horizontal.divider {
+  margin: 3em 0em;
+}
 
- .quote.stripe.segment {
- padding: 0em;
- }
- .quote.stripe.segment .grid .column {
- padding-top: 5em;
- padding-bottom: 5em;
- }
+.quote.stripe.segment {
+  padding: 0em;
+}
+.quote.stripe.segment .grid .column {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
 
- .footer.segment {
- padding: 5em 0em;
- }
+.footer.segment {
+  padding: 5em 0em;
+}
 
- #toc {
- display: none;
- }
+#toc {
+  display: none;
+}
 
- #login {
-   margin-right: 20px;
- }
+#login {
+  margin-right: 20px;
+}
 
- .signup_choice {
-   color: white;
- }
-
-
- .simple-calendar {
-   table {
-     margin: 0 auto;
-     text-align: right;
-   }
-
-   .table-fill {
-     background: white;
-     border-radius:3px;
-     border-collapse: collapse;
-     margin: auto;
-     max-width: 600px;
-     padding:5px;
-     width: 100%;
-     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-     animation: float 5s infinite;
-   }
-
-   th {
-     color:#D5DDE5;;
-     background:#1b1e24;
-     border-bottom:4px solid #9ea7af;
-     border-right: 1px solid #343a45;
-     font-size:23px;
-     font-weight: 100;
-     padding:24px;
-     text-align:left;
-     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-     vertical-align:middle;
-   }
-
-   th:first-child {
-     border-top-left-radius:3px;
-   }
-
-   th:last-child {
-     border-top-right-radius:3px;
-     border-right:none;
-   }
-
-   tr {
-     border-top: 1px solid #C1C3D1;
-     border-bottom-: 1px solid #C1C3D1;
-     color:#666B85;
-     font-size:16px;
-     font-weight:normal;
-     text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
-   }
-
-   tr:hover td {
-     background:#4E5066;
-     color:#FFFFFF;
-     border-top: 1px solid #22262e;
-     border-bottom: 1px solid #22262e;
-   }
-
-   tr:first-child {
-     border-top:none;
-   }
-
-   tr:last-child {
-     border-bottom:none;
-   }
-
-   tr:nth-child(odd) td {
-     background:#EBEBEB;
-   }
-
-   tr:nth-child(odd):hover td {
-     background:#4E5066;
-   }
-
-   tr:last-child td:first-child {
-     border-bottom-left-radius:3px;
-   }
-
-   tr:last-child td:last-child {
-     border-bottom-right-radius:3px;
-   }
-
-   td {
-     background:#FFFFFF;
-     padding:20px;
-     text-align:left;
-     vertical-align:middle;
-     font-weight:300;
-     font-size:18px;
-     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-     border-right: 1px solid #C1C3D1;
-   }
-
-   td:last-child {
-     border-right: 0px;
-   }
+.signup_choice {
+  color: white;
 }
 
 
- @media only screen and (max-width: 700px) {
-   .ui.fixed.menu {
-    display: none !important;
-   }
-   .secondary.pointing.menu .item,
-   .secondary.pointing.menu .menu {
-    display: none !important;
-   }
+.simple-calendar {
+  table {
+    margin: 0 auto;
+    text-align: left;
+  }
 
-   #toc {
+  th {
+    color:#D5DDE5;;
+    background:#1b1e24;
+    border-bottom:4px solid #9ea7af;
+    border-right: 1px solid #343a45;
+    font-size: 1em;
+    font-weight: 100;
+    padding:12px;
+    text-align:left;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    vertical-align:middle;
+  }
+  th:first-child {
+    border-top-left-radius:3px;
+  }
+
+  th:last-child {
+    border-top-right-radius:3px;
+    border-right:none;
+  }
+
+  tr {
+    border-top: 1px solid #C1C3D1;
+    border-bottom-: 1px solid #C1C3D1;
+    color:#666B85;
+    font-size: 1em;
+    font-weight:normal;
+    text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+  }
+
+  tr:first-child {
+    border-top:none;
+  }
+
+  tr:last-child {
+    border-bottom:none;
+  }
+
+  tr:nth-child(odd) td {
+    background:#EBEBEB;
+  }
+
+  tr:last-child td:first-child {
+    border-bottom-left-radius:3px;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom-right-radius:3px;
+  }
+
+  td {
+    background:#FFFFFF;
+    padding: 5px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight:300;
+    font-size: 1em;
+    // text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+    border-right: 1px solid #C1C3D1;
+  }
+
+  td:last-child {
+    border-right: 0px;
+  }
+
+  .calendar-heading {
+    margin: 0 auto;
+    text-align: center;
+    -webkit-border-horizontal-spacing: 0px;
+  }
+
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {
+  }
+  .next-month {
+  }
+  .current-month {
+  }
+
+  .has-events {}
+}
+
+
+@media only screen and (max-width: 700px) {
+  .ui.fixed.menu {
+    display: none !important;
+  }
+  .secondary.pointing.menu .item,
+  .secondary.pointing.menu .menu {
+    display: none !important;
+  }
+
+  #toc {
     display: block !important;
 
-   }
-   .masthead.segment {
+  }
+  .masthead.segment {
     min-height: 350px;
-   }
-   .masthead h1.ui.header {
+  }
+  .masthead h1.ui.header {
     font-size: 2em;
     margin-top: 1.5em;
-   }
-   .masthead h2 {
+  }
+  .masthead h2 {
     margin-top: 0.5em;
     font-size: 1.5em;
-   }
-   .center_list{
-     margin-left: 0px !important;
-   }
- }
+  }
+  .center_list{
+    margin-left: 0px !important;
+  }
+}
