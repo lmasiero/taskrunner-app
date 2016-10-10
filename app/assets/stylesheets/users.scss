@@ -1,3 +1,41 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#signup_header {
+  color: white;
+}
+
+#push_down {
+  margin-top: 100px;
+}
+
+#tree {
+  width: 350px;
+  height: 230px;
+}
+
+#push_down_categories {
+  margin-top: 40px;
+  text-align:center;
+}
+
+#push_down_content {
+  margin-bottom: 20px
+}
+
+#edit_user_form{
+  margin-bottom: 50px
+}
+
+.center_list{
+  margin-left: 70px !important;
+}
+
+.numbers {
+  font-weight: bold;
+}
+
+.list {
+  margin: 0 auto;
+}

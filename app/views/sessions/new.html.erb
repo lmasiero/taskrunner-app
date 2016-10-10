@@ -1,19 +1,17 @@
-<div class="ui inverted vertical masthead center aligned segment">
-
-  <div class="ui container">
-    <div id = "colorNav" class="ui large secondary inverted pointing menu">
-      <a id="toc" class="toc item">
-        <i class="sidebar icon"></i>
-      </a>
-      <%= link_to "Home", root_path, :class => "item", :method => :get %>
-      <%= link_to "About", root_path, :class => "item", :method => :get %>
-      <%= link_to "Company", root_path, :class => "item", :method => :get %>
-      <%= link_to "Careers", root_path, :class => "item", :method => :get %>
-      <div class="right item">
-        <div class="item">
-          <%= button_to "Log In", login_path, :id => "login", :class => "ui inverted button", :method => :get %>
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment">
+    <div class="ui container">
+      <div id = "colorNav" class="ui large secondary inverted pointing menu">
+        <a id="toc" class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        <%= link_to "Home", root_path, :class => "item", :method => :get %>
+        <%= link_to "About", root_path, :class => "item", :method => :get %>
+        <%= link_to "Company", root_path, :class => "item", :method => :get %>
+        <%= link_to "Careers", root_path, :class => "item", :method => :get %>
+        <div class="right item">
+          <a class="ui inverted button signup">Sign Up</a>
         </div>
-        <a class="ui inverted button signup">Sign Up</a>
       </div>
     </div>
 
@@ -21,8 +19,8 @@
       <div id="login_form" class="column">
         <h2 class="ui image header">
           <%= image_tag("running.png", class: 'image') %>
-          <div id="signup_header" class="content">
-            Sign up for a user account
+          <div id="login_form_header" class="content">
+            Log-in to your account
           </div>
         </h2>
         <%= form_for :user, :html => {:class => "ui large inverted form"} do |f| %>
@@ -31,18 +29,6 @@
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <%= f.text_field :name, placeholder: "Enter your name"%>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="mobile icon"></i>
-                <%= f.number_field :mobile_number, placeholder: "Enter your mobile number"%>
-              </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="laptop icon"></i>
                 <%= f.email_field :email, placeholder: "Enter your email"%>
               </div>
             </div>
@@ -55,6 +41,8 @@
             <%= f.submit "Login", :class => "ui fluid large teal submit button" %>
           </div>
         <% end %>
+        <%= link_to 'Back', root_path, :class => "ui inverted button", :id => "back_button" %>
+
       </div>
 
 
@@ -86,5 +74,5 @@
       </div>
 
   </div>
-  
+
 </div>

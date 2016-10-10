@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem "simple_calendar", "~> 2.0"
 
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
