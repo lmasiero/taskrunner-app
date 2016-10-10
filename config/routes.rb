@@ -4,9 +4,7 @@ Rails.application.routes.draw do
 
   resources :requests, :sessions, :users, :categories, :professionals, :services
 
-  get "users/signup"
   #get "professionals/signup", to: "professionals#new", as: "signup"
-
   post "/sessions/new" => "sessions#create"
 
   get "signup" => "users#new"

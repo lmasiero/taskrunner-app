@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout "user", except: [:new]
-  before_action :is_authenticated, except: [:new]
+  before_action :is_authenticated, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -23,15 +23,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to user_path(@user.id)
+    else
+      render 'new'
     end
   end
 
