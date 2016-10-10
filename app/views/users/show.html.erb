@@ -66,6 +66,8 @@
       </div>
     </div>
     <div class="ui horizontal divider">or</div>
+
+    <!-- SEARCH -->
     <h2>Do a quick search</h2>
     <div class="ui search">
       <div class="ui icon input">
@@ -85,28 +87,24 @@
         </tr>
       </thead>
       <tbody>
+        <% @professionals.each do |professional| %>
         <tr>
-          <td>Steve</td>
+          <td><%= professional.name %></td>
           <td>East,West</td>
           <td>Mon-Fri, 9am-5pm</td>
-          <td>Home fixtures, shelving, furniture unpacking and putting together</td>
           <td>
-            <%= link_to professional_path, :method => :get do%>
-            <i class="calendar icon"></i>
+          <% professional.services.each do |service| %>
+            <span><%= service.name %>, </span>
+          <% end %>
+          </td>
+          <td>
+            <%= link_to professional_path(professional), :method => :get do%>
+              <i class="calendar icon"></i>
             <% end %>
           </td>
         </tr>
-        <tr>
-          <td>Jane</td>
-          <td>East,North,West</td>
-          <td>Mon-Fri, 9am-5pm</td>
-          <td>Home fixtures, shelving, furniture unpacking and putting together</td>
-          <td>
-            <%= link_to professional_path, :method => :get do%>
-            <i class="calendar icon"></i>
-            <% end %>
-          </td>
-        </tr>
+        <% end %>
+
       </tbody>
     </table>
     <div class="two wide column"></div>

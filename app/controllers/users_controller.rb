@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @professionals = Professional.all
   end
 
   # GET /users/new
