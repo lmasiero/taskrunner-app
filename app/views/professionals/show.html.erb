@@ -4,10 +4,19 @@
   <div class="ui main text container">
     <div class="two wide column"></div>
     <div class="content">
-      <p><%= @professional.name %> offers the following services:</p>
+      <h3>
+        <%= @professional.name %> offers the following services:
+      </h3>
+      <ol>
+      <% @services.each do |service| %>
+        <li>
+            <%= service.name %>
+        </li>
+      <% end %>
+      </ol>
 
-      <p><%= @professional.name %>'s Calendar</p>
-      
+      <h3>Click on a date to request <%= @professional.name %>'s services</h3>
+
       <%= month_calendar events: @requests do |date, requests| %>
         <%= date.to_formatted_s(:short) %>
 
