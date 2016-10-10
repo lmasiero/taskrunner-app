@@ -12,5 +12,47 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require semantic-ui
 //= require turbolinks
 //= require_tree .
+
+$(document)
+  .ready(function() {
+    // fix menu when passed
+    $('.masthead')
+      .visibility({
+        once: false,
+        onBottomPassed: function() {
+          $('.fixed.menu').transition('fade in');
+        },
+        onBottomPassedReverse: function() {
+          $('.fixed.menu').transition('fade out');
+        }
+      })
+    ;
+
+    // create sidebar and attach to menu open
+    $('.ui.sidebar')
+      .sidebar('attach events', '.toc.item')
+    ;
+
+    //Remove white navigation bar at smaller screen width, toggle vertical and horizontal menus
+    $(window).resize(function(){
+     if($(window).width()<700){
+      $('#fixed').removeClass('visible');
+      $('#fixed').addClass('hidden');
+      $('#fixedUser').removeClass('fixed');
+      $('#fixedUser').addClass('stackable');
+     }
+    });
+
+    $(window).resize(function(){
+     if($(window).width()>700){
+      $('#fixedUser').removeClass('stackable');
+      $('#fixedUser').addClass('fixed');
+     }
+    });
+
+    $('.ui.basic.modal').modal('attach events', '.signup', 'show')
+
+  });

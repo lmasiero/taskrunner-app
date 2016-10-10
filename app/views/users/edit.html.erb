@@ -1,2 +1,42 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div id="push_down" class="pusher">
+  <div class="ui middle aligned center aligned grid">
+    <div id="edit_user_form" class="column">
+      <h2 class="ui image header">
+        <i class="edit icon"></i>
+        <div class="content">
+          Edit account
+        </div>
+      </h2>
+      <!-- Remember to change below to 'edit' form structure -->
+      <%= form_for :user, :html => {:class => "ui large form"} do |f| %>
+
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.text_field :name, placeholder: "Name"%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="mobile icon"></i>
+              <%= f.number_field :mobile_number, placeholder: "Mobile number"%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="laptop icon"></i>
+              <%= f.email_field :email, placeholder: "Email"%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= f.password_field :password, placeholder: "Password", :html => {:class => "field"} %>
+            </div>
+          </div>
+          <%= f.submit "Make changes", :class => "ui fluid large teal submit button" %>
+        </div>
+      <% end %>
+    </div>
+</div>

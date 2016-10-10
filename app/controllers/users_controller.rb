@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout "user", except: [:new]
+
   def index
   end
 
