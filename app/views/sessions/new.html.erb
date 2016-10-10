@@ -23,24 +23,26 @@
             Log-in to your account
           </div>
         </h2>
-        <%= form_for :user, :html => {:class => "ui large inverted form"} do |f| %>
 
-          <div class="ui stacked segment">
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="user icon"></i>
-                <%= f.email_field :email, placeholder: "Enter your email"%>
+          <%= form_for :user, :html => {:class => "ui large inverted form"} do |f| %>
+
+            <div class="ui stacked segment">
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="user icon"></i>
+                  <%= f.email_field :email, placeholder: "Enter your email"%>
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="ui left icon input">
-                <i class="lock icon"></i>
-                <%= f.password_field :password, placeholder: "Enter your password", :html => {:class => "field"} %>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <%= f.password_field :password, placeholder: "Enter your password", :html => {:class => "field"} %>
+                </div>
               </div>
+              <%= f.submit "Login", :class => "ui fluid large teal submit button" %>
             </div>
-            <%= f.submit "Login", :class => "ui fluid large teal submit button" %>
-          </div>
-        <% end %>
+          <% end %>
+
         <%= link_to 'Back', root_path, :class => "ui inverted button", :id => "back_button" %>
 
       </div>

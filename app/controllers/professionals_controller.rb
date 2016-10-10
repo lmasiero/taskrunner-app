@@ -1,4 +1,6 @@
 class ProfessionalsController < ApplicationController
+  layout "professional", except: [:new]
+  before_action :is_authenticated, except: [:new]
   before_action :set_professional, only: [:show, :edit, :update, :destroy]
 
   # GET /professionals

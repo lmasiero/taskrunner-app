@@ -25,7 +25,8 @@
             Sign up for a user account
           </div>
         </h2>
-        <%= form_for :user, :html => {:class => "ui large inverted form"} do |f| %>
+
+        <%= form_for :user, url: users_path, :html => {:class => "ui large inverted form"} do |f| %>
 
           <div class="ui stacked segment">
             <div class="field">
@@ -52,7 +53,7 @@
                 <%= f.password_field :password, placeholder: "Enter your password", :html => {:class => "field"} %>
               </div>
             </div>
-            <%= f.submit "Login", :class => "ui fluid large teal submit button" %>
+            <%= f.submit "Sign Up", :class => "ui fluid large teal submit button" %>
           </div>
         <% end %>
       </div>

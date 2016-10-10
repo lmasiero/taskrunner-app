@@ -1,29 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @professional.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @professional.email %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @professional.password_digest %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @professional.category_id %>
-</p>
-
-<p>
-  <strong>Mobile number:</strong>
-  <%= @professional.mobile_number %>
-</p>
-
-<%= link_to 'Edit', edit_professional_path(@professional) %> |
-<%= link_to 'Back', professionals_path %>
+<div id="push_down" class="pusher">
+  <div class="ui main text container">
+    <div class="two wide column"></div>
+    <div class="ui right centered grid" id="push_down_content">
+      <div class="ui items">
+        <div class="item">
+          <a class="ui tiny image">
+            <%= image_tag("reviewer.png") %>
+          </a>
+          <div class="content">
+            <a class="header">Hi, <%=@professional.name%>!</a>
+            <div class="description">
+              Your last login was on xxx
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ui horizontal divider">Welcome back!</div>
+  </div>
+</div>

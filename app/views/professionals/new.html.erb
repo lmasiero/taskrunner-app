@@ -1,5 +1,95 @@
-<h1>New Professional</h1>
+<div class="ui inverted vertical masthead center aligned segment">
 
-<%= render 'form', professional: @professional %>
+  <div class="ui container">
+    <div id = "colorNav" class="ui large secondary inverted pointing menu">
+      <a id="toc" class="toc item">
+        <i class="sidebar icon"></i>
+      </a>
+      <%= link_to "Home", root_path, :class => "item", :method => :get %>
+      <%= link_to "About", root_path, :class => "item", :method => :get %>
+      <%= link_to "Company", root_path, :class => "item", :method => :get %>
+      <%= link_to "Careers", root_path, :class => "item", :method => :get %>
+      <div class="right item">
+        <div class="item">
+          <%= button_to "Log In", login_path, :id => "login", :class => "ui inverted button", :method => :get %>
+        </div>
+        <a class="ui inverted button signup">Sign Up</a>
+      </div>
+    </div>
 
-<%= link_to 'Back', professionals_path %>
+    <div class="ui middle aligned center aligned grid">
+      <div id="login_form" class="column">
+        <h2 class="ui image header">
+          <%= image_tag("running.png", class: 'image') %>
+          <div id="signup_header" class="content">
+            Sign up for a professional account
+          </div>
+        </h2>
+
+        <%= form_for :professional, url: professionals_path, :html => {:class => "ui large inverted form"} do |f| %>
+
+          <div class="ui stacked segment">
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="user icon"></i>
+                <%= f.text_field :name, placeholder: "Enter your name"%>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="mobile icon"></i>
+                <%= f.number_field :mobile_number, placeholder: "Enter your mobile number"%>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="laptop icon"></i>
+                <%= f.email_field :email, placeholder: "Enter your email"%>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <%= f.password_field :password, placeholder: "Enter your password", :html => {:class => "field"} %>
+              </div>
+            </div>
+
+            <p><strong>Please pick a category</strong></p>
+            <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}%>
+
+            <%= f.submit "Sign Up", :class => "ui fluid large teal submit button",:id => "login" %>
+          </div>
+        <% end %>
+      </div>
+
+
+      <div class="ui basic modal">
+        <i class="close icon"></i>
+        <div class="header">
+          Choose Sign Up
+        </div>
+        <div class="image content">
+          <div class="image">
+            <i class="users icon"></i>
+          </div><br>
+          <div class="description">
+            <h3>Are you signing up as a service provider or seeker?</h3>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="two fluid ui inverted buttons">
+            <div class="ui basic inverted button">
+              <i class="user icon"></i>
+              <%= link_to "Service Seeker", new_user_path, :class => "signup_choice", :method => :get %>
+            </div>
+            <div class="ui basic inverted button">
+              <i class="doctor icon"></i>
+              <%= link_to "Service Provider", new_professional_path, :class => "signup_choice", :method => :get %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+</div>
