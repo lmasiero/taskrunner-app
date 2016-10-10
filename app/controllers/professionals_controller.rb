@@ -15,10 +15,10 @@ class ProfessionalsController < ApplicationController
     @professional = Professional.find(params[:id])
     if current_user
       @current_user = current_user
-      puts @current_user.inspect
+      @requests = @professional.requests
+      puts @requests.inspect
     elsif current_professional
       @current_professional = current_professional
-      puts @current_professional.inspect
     end
   end
 

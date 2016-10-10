@@ -7,10 +7,8 @@
       <p><%= @professional.name %> offers the following services:</p>
 
       <p><%= @professional.name %>'s Calendar</p>
-      <%= month_calendar events: @professional.requests do |date, requests| %>
-        <a href="/requests/new/<%= date %>">
-        <%= date.to_formatted_s(:short) %>
-        </a>
+      <%= month_calendar events: @requests do |date, requests| %>
+        <%= date %>
 
         <% requests.each do |request| %>
           <div>
