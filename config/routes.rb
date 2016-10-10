@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
-  resources :requests, :sessions, :users, :categories, :professionals, :services
-
+  resources :requests, :sessions, :users, :categories, :professionals
+  resources :professionals do
+    resources :services
+  end
   #get "professionals/signup", to: "professionals#new", as: "signup"
   post "/sessions/new" => "sessions#create"
 

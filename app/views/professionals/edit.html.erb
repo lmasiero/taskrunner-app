@@ -1,6 +1,46 @@
-<h1>Editing Professional</h1>
+<div id="push_down" class="pusher">
+  <div class="ui middle aligned center aligned grid">
+    <div id="edit_user_form" class="column">
+      <h2 class="ui image header">
+        <i class="edit icon"></i>
+        <div class="content">
+          Edit account
+        </div>
+      </h2>
 
-<%= render 'form', professional: @professional %>
+      <%= form_for :professional, url: professional_path(@professional), :html => {:class => "ui large form"}, method: :patch do |f| %>
 
-<%= link_to 'Show', @professional %> |
-<%= link_to 'Back', professionals_path %>
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <%= f.text_field :name, placeholder: "Name"%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="mobile icon"></i>
+              <%= f.number_field :mobile_number, placeholder: "Mobile number"%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="laptop icon"></i>
+              <%= f.email_field :email, placeholder: "Email"%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <%= f.password_field :password, placeholder: "Password", :html => {:class => "field"} %>
+            </div>
+          </div>
+
+          <p><strong>Category</strong></p>
+          <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}%>
+
+          <%= f.submit "Make changes", :class => "ui fluid large teal submit button", :id => "submit_changes" %>
+        </div>
+      <% end %>
+    </div>
+</div>

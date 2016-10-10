@@ -1,11 +1,22 @@
 class ServicesController < ApplicationController
+  layout "service"
+  before_action :is_authenticated_pro
+
   def index
+    @professional = Professional.find(params[:professional_id])
+    @service = Service.new
+    # @service = @professional.services.create(service_params)
+    @services = @professional.services
   end
 
   def create
+    @professional = Professional.find(params[:professional_id])
+    @service = @professional.services.create(service_params)
   end
 
   def new
+    @professional = Professional.find(params[:professional_id])
+    @service = Service.new
   end
 
   def edit
@@ -14,9 +25,14 @@ class ServicesController < ApplicationController
   def show
   end
 
-  def update
+  def destroy
+    @professional = Professional.find(params[:professional_id])
+    @service = @professional.services.find(params[:id])
+    @service.destroy
   end
 
-  def destroy
+  private
+  def service_params
+    params.require(:service).permit(:name)
   end
 end

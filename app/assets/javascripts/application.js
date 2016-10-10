@@ -56,3 +56,5 @@ $(document)
     $('.ui.basic.modal').modal('attach events', '.signup', 'show')
 
   });
+
+    

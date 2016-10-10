@@ -1,2 +1,47 @@
-<h1>Service#index</h1>
-<p>Find me in app/views/service/index.html.erb</p>
+<div id="push_down_services" class="pusher">
+  <div class="ui middle aligned center aligned grid">
+    <div class="ui link cards">
+      <div class="card">
+        <div class="image">
+          <%= image_tag("avatar.png") %>
+        </div>
+        <div class="content">
+          <div class="header"><%=@professional.name%></div>
+          <div class="meta">
+            <a>Current Category: <%=@professional.category.name%></a>
+          </div>
+        </div>
+        <div class="extra content">
+          <p>
+            <strong>Current Services: </strong>
+            <ul class="ui middle aligned divided list" id="add_service">
+              <% if @services.present? %>
+                <% @services.each do |service| %>
+                  <div class="item">
+                    <div class="right floated content">
+                      <div class="ui button delete_service"><%= link_to "Remove", professional_service_path(@professional,service), method: :delete %></div>
+                    </div>
+                    <i class="pin icon"></i>
+                    <div class="content">
+                      <%= service.name %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </ul>
+          </p>
+          <%= form_for(@service, url: professional_services_path(@professional), remote: true) do |f| %>
+            <p>
+              <%= f.label :add %><br>
+              <%= f.text_field :name %>
+            </p>
+
+            <p>
+              <%= f.submit %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
