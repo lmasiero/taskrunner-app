@@ -12,7 +12,7 @@ class ProfessionalsController < ApplicationController
   # GET /professionals/1
   # GET /professionals/1.json
   def show
-    @professional = Professional.find
+    @professional = Professional.find(params[:id])
   end
 
   # GET /professionals/new
