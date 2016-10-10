@@ -6,4 +6,5 @@ class Professional < ApplicationRecord
   def self.authenticate(params)
     Professional.find_by_email(params[:email]).try(:authenticate, params[:password])
   end
+  
 end
