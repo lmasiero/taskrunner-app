@@ -8,7 +8,7 @@
         </div>
       </h2>
       <!-- Remember to change below to 'edit' form structure -->
-      <%= form_for :user, :html => {:class => "ui large form"} do |f| %>
+      <%= form_for :user, url: user_path(@user), :html => {:class => "ui large form"}, method: :patch do |f| %>
 
         <div class="ui stacked segment">
           <div class="field">
