@@ -5,9 +5,6 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
-  def signup
-    render('new')
-  end
 
   def show
     @user = User.find(params[:id])

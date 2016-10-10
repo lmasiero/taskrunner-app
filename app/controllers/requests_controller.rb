@@ -1,25 +1,31 @@
 class RequestsController < ApplicationController
   def index
-    if current_user
-      @requests = Request.where({
-        user_id: current_user.id
-        })
-    elsif current_pro
-      @requests = Request.where({
-        pro_id: current_pro.id,
-        status: 'pending'
-        })
-    end
+    @requests = Request.all
+    # if current_user
+    #   @requests = Request.where({
+    #     user_id: current_user.id
+    #     })
+    # elsif current_pro
+    #   @requests = Request.where({
+    #     pro_id: current_pro.id,
+    #     status: 'pending'
+    #     })
+    # end
   end
 
   # for USER only, not Pro
   def new
     @request = Request.new
+    # @date = params[:date]
     @current_user = current_user
   end
 
   # for USER only, not Pro
   def create
+    # puts params.inspect
+    # puts request_params.inspect
+    # request_params[:start_time] = params[:date] + request_params[:start_time]
+    # Date.new(2015, 2, 10).to_datetime + Time.parse("16:30").seconds_since_midnight.seconds
     @request = Request.new(request_params)
 
     if @request.save
@@ -64,6 +70,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-  	params.require(:request).permit(:appointment_time, :appointment_details)
+  	params.require(:request).permit(:professional_id, :appointment_time, :appointment_details, :start_time)
   end
 end

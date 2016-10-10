@@ -1,2 +1,45 @@
 <h1>Requests#new</h1>
 <p>Find me in app/views/requests/new.html.erb</p>
+
+<%= form_for :request, url: requests_path do |f| %>
+<% if @request.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@request.errors.count, "error") %> prohibited
+      this request from being saved:
+    </h2>
+    <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p>
+  <strong><%= f.label "Date" %></strong><br>
+  <%= @date %>
+  <input type="hidden" name="date" value="<%= @date %>" />
+</p>
+
+<p>
+  <strong><%= f.label :professional %></strong><br>
+  <%= f.select :professional_id, Professional.all.collect {|x| [x.name, x.id]}  %>
+</p>
+
+<p>
+  <strong><%= f.label :appointment_details %></strong><br>
+  <%= f.text_field :appointment_details %>
+</p>
+
+<p>
+  <strong><%= f.label :start_time %></strong><br>
+  <p style= "font-size:13px;margin-top:-10px;" >Please select an appointment time between 9AM - 6PM</p>
+  <%= f.time_field :start_time %>
+</p>
+
+
+<p>
+  <%= f.submit %>
+</p>
+<% end %>

@@ -12,6 +12,7 @@ class ProfessionalsController < ApplicationController
   # GET /professionals/1
   # GET /professionals/1.json
   def show
+    @professional = Professional.find
   end
 
   # GET /professionals/new
