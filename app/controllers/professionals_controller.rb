@@ -13,6 +13,13 @@ class ProfessionalsController < ApplicationController
   # GET /professionals/1.json
   def show
     @professional = Professional.find(params[:id])
+    if current_user
+      @current_user = current_user
+      puts @current_user.inspect
+    elsif current_professional
+      @current_professional = current_professional
+      puts @current_professional.inspect
+    end
   end
 
   # GET /professionals/new

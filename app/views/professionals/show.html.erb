@@ -1,3 +1,30 @@
+<% if @current_user %>
+
+<div id="push_down" class="pusher">
+  <div class="ui main text container">
+    <div class="two wide column"></div>
+    <div class="content">
+      <p><%= @professional.name %> offers the following services:</p>
+
+      <p><%= @professional.name %>'s Calendar</p>
+      <%= month_calendar events: @professional.requests do |date, requests| %>
+        <a href="/requests/new/<%= date %>">
+        <%= date.to_formatted_s(:short) %>
+        </a>
+
+        <% requests.each do |request| %>
+          <div>
+              <%= request.appointment_details %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+    <div class="ui horizontal divider"></div>
+  </div>
+</div>
+<% elsif @current_professional %>
+
 <div id="push_down" class="pusher">
   <div class="ui main text container">
     <div class="two wide column"></div>
@@ -19,3 +46,9 @@
     <div class="ui horizontal divider">Welcome back!</div>
   </div>
 </div>
+
+Summary of Pro's profile
+- category and services
+
+
+<% end %>
