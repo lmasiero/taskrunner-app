@@ -69,6 +69,6 @@ class ProfessionalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def professional_params
-      params.require(:professional).permit(:name, :email, :password_digest, :category_id, :mobile_number)
+      params.require(:professional).permit(:name, :email, :password, :category_id, :mobile_number)
     end
 end
