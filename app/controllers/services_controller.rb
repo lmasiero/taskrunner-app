@@ -12,7 +12,8 @@ class ServicesController < ApplicationController
   def create
     @professional = Professional.find(params[:professional_id])
     @service = @professional.services.create(service_params)
-    data = @professional
+    @info = {pro_id: @professional.id, ser_id: @service.id}
+    render json: @info
   end
 
   def new

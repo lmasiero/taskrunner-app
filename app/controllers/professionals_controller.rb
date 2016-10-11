@@ -1,5 +1,6 @@
 class ProfessionalsController < ApplicationController
   layout "professional", except: [:new]
+  before_action :is_authenticated_pro
   before_action :is_authenticated_pro, except: [:new, :create, :show]
   before_action :set_professional, only: [:show, :edit, :update, :destroy]
 
@@ -17,7 +18,6 @@ class ProfessionalsController < ApplicationController
       @current_user = current_user
       @requests = @professional.requests
       @services = @professional.services
-      puts @requests.inspect
     elsif current_professional
       @current_professional = current_professional
     end

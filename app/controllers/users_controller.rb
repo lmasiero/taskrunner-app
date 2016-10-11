@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   layout "user", except: [:new]
+  before_action :is_authenticated
   before_action :is_authenticated_user, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
 
   def show
     @user = User.find(params[:id])

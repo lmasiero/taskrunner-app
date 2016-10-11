@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(user_params)
     if user
-      session[:user_id] = user.id
+      session[:user_email] = user.email
       flash[:success] = "User logged in!!"
       redirect_to user_path(user.id)
     else
         pro = Professional.authenticate(user_params)
       if pro
-        session[:user_id] = pro.id
+        session[:user_email] = pro.email
         flash[:success] = "User logged in!!"
         redirect_to professional_path(pro.id)
       else
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-  	session[:user_id] = nil
+  	session[:user_email] = nil
   	redirect_to root_url, notice: "Logged out"
   end
 

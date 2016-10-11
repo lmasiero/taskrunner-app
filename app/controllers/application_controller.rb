@@ -4,19 +4,19 @@ class ApplicationController < ActionController::Base
   def is_authenticated_user
     unless current_user
       flash[:danger] = "Credentials Invalid!!"
-      redirect_to login_path
+      redirect_to professional_path
     end
   end
 
   def is_authenticated_pro
     unless current_professional
       flash[:danger] = "Credentials Invalid!!"
-      redirect_to login_path
+      redirect_to user_path
     end
   end
 
   def is_authenticated
-    unless current_professional || current_user
+    if current_professional.blank? && current_user.blank?
       flash[:danger] = "Credentials Invalid!!"
       redirect_to login_path
     end
@@ -24,20 +24,14 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-  	if session[:user_id]
-      userExists = User.where(id: session[:user_id])
-      if userExists.present?
-  		    @current_user ||= User.find(session[:user_id])
-      end
+  	if session[:user_email]
+  	    @current_user ||= User.find_by(email: session[:user_email])
   	end
   end
 
   def current_professional
-  	if session[:user_id]
-      professionalExists = Professional.where(id: session[:user_id])
-      if professionalExists.present?
-  		    @current_professional ||= Professional.find(session[:user_id])
-      end
+  	if session[:user_email]
+  		    @current_professional ||= Professional.find_by(email: session[:user_email])
   	end
   end
 
