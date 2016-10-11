@@ -17,8 +17,9 @@
 
       <h3>Click on a date to request <%= @professional.name %>'s services</h3>
 
+      <!-- SIMPLE_CALENDAR -->
       <%= month_calendar events: @requests do |date, requests| %>
-        <%= date.to_formatted_s(:short) %>
+        <%= link_to date.to_formatted_s(:short), new_request_path, remote: true %>
 
         <% requests.each do |request| %>
           <div>
@@ -26,6 +27,8 @@
           </div>
         <% end %>
       <% end %>
+
+      <div id="request-form" style="display:none;"></div>
 
     </div>
     <div class="ui horizontal divider"></div>
