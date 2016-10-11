@@ -20,7 +20,7 @@
       <!-- SIMPLE_CALENDAR -->
       <div id="requests">
       <%= month_calendar events: @requests do |date, requests| %>
-        <%= link_to date.to_formatted_s(:short), new_request_path, remote: true %>
+        <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, :class => date %>
 
         <% requests.each do |request| %>
           <div>

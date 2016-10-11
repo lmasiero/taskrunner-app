@@ -40,10 +40,8 @@ class ProfessionalsController < ApplicationController
     respond_to do |format|
       if @professional.save
         format.html { redirect_to @professional, notice: 'Professional was successfully created.' }
-        format.json { render :show, status: :created, location: @professional }
       else
         format.html { render :new }
-        format.json { render json: @professional.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -80,6 +78,6 @@ class ProfessionalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def professional_params
-      params.require(:professional).permit(:name, :email, :password, :category_id, :mobile_number)
+      params.require(:professional).permit(:name, :email, :password, :category_id, :mobile_number, :area_ids => [])
     end
 end

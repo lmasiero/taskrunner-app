@@ -20,17 +20,20 @@ class RequestsController < ApplicationController
   # for USER only, not Pro
   def new
     @request = Request.new
+    @request.start_time = params[:date]
     # @date = params[:date]
     @current_user = current_user
+    @selected_date = params[:date]
+    puts "selected_date", @selected_date
   end
 
   # for USER only, not Pro
   def create
-    @current_user = current_user
-    request_params.user_id = @current_user.id
     @request = Request.new(request_params)
+    @current_user = current_user
+    @request[:user_id] = @current_user.id
 
-    puts @request.inspect
+    @request[:end_time] = request_params[:start_time]
 
     if @request.save
   		redirect_to requests_path, notice: 'Request has been sent to PRO_NAME! We will email you once your request is confirmed (within 1 day)'
@@ -74,6 +77,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-  	params.require(:request).permit(:professional_id, :appointment_time, :appointment_details, :start_time, :end_time)
+  	params.require(:request).permit(:professional_id, :appointment_time, :appointment_details, :start_time, :start_time_time, :end_time, @selected_date)
   end
 end

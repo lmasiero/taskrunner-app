@@ -59,7 +59,7 @@
               Appointment not confirmed
             </td>
             <td>
-              <button class="ui teal button">Confirm Changes</button>
+              <button class="ui teal button">Make Changes</button>
             </td>
           </tr>
         </tbody>
@@ -95,48 +95,66 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="warning">
-            <td>
-              <h4 class="ui image header">
-                <%= image_tag("mini_avatar.png", class: "ui mini rounded image") %>
-                <div class="content">
-                  Lena
-                  <div class="sub header">Beauty</div>
-                </div>
-              </h4>
-            </td>
-            <td>
-              3:00pm
-            </td>
-            <td>
-              5:00pm
-            </td>
-            <td>
-              Blow and dry
-            </td>
-            <td>
-              <div class="ui dropdown">
-                <div class="text">Pending</div>
-                  <i class="dropdown icon"></i>
-                  <div class="menu">
-                    <div class="item">Pending</div>
-                    <div class="item">Confirm</div>
-                    <div class="item">Cancel</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              Appointment not confirmed
-            </td>
-            <td>
-              <button class="ui teal button">Confirm Changes</button>
-            </td>
-          </tr>
+          <% @requests.each do |request| %>
+            <tr class="warning">
+              <td>
+                <h4 class="ui image header">
+                  <%= image_tag("mini_avatar.png", class: "ui mini rounded image") %>
+                  <div class="content">
+                    Lena
+                    <div class="sub header"><%= @professional.category %></div>
+                  </div>
+                </h4>
+              </td>
+              <td>
+                <%= @request.start_time %>
+              </td>
+              <td>
+                <%= @request.end_time %>
+              </td>
+              <td>
+                <%= @request.appointment_details %>
+              </td>
+              <td>
+                <%= @request.status %>
+              </td>
+              <td>
+                Appointment not confirmed
+              </td>
+              <td>
+                <button class="ui teal button" id="user_req_changes">Make Changes</button>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
         </table>
     </div>
   </div>
 
-
+  <div class="ui modal user">
+    <i class="close icon"></i>
+    <div class="header">
+      Profile Picture
+    </div>
+    <div class="image content">
+      <div class="ui medium image">
+        <img src="/images/avatar/large/chris.jpg">
+      </div>
+      <div class="description">
+        <div class="ui header">We've auto-chosen a profile image for you.</div>
+        <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+        <p>Is it okay to use this photo?</p>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
+        Nope
+      </div>
+      <div class="ui positive right labeled icon button">
+        Yep, that's me
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
 
 <% end %>
