@@ -1,2 +1,142 @@
-<h1>Requests#index</h1>
-<p>Find me in app/views/requests/index.html.erb</p>
+<% if @current_professional %>
+  <div id="push_down" class="pusher">
+    <div class="ui main text container">
+      <div class="ui horizontal divider">Manage Requests</div>
+      <div class="one wide column"></div>
+      <div class="ui label" id="pending">
+        Request Pending
+      </div>
+      <div class="ui label" id="confirmed">
+        Confirmed Appointment
+      </div>
+      <div class="ui label" id="cancelled">
+        Cancelled Appointment
+      </div>
+      <table class="ui selectable celled table" id="pro_request_table">
+        <thead>
+          <tr>
+            <th>Appointment with</th>
+            <th>Appt. start time</th>
+            <th>Appt. potential end time</th>
+            <th>Details</th>
+            <th>Change Status</th>
+            <th>Contact (open once appointment is confirmed)</th>
+            <th>Confirm Changes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="warning">
+            <td>
+              <h4 class="ui image header">
+                <%= image_tag("mini_avatar.png", class: "ui mini rounded image") %>
+                <div class="content">
+                  Lena
+                  <div class="sub header">Beauty</div>
+                </div>
+              </h4>
+            </td>
+            <td>
+              3:00pm
+            </td>
+            <td>
+              5:00pm
+            </td>
+            <td>
+              Blow and dry
+            </td>
+            <td>
+              <div class="ui dropdown">
+                <div class="text">Pending</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <div class="item">Pending</div>
+                    <div class="item">Confirm</div>
+                    <div class="item">Cancel</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              Appointment not confirmed
+            </td>
+            <td>
+              <button class="ui teal button">Confirm Changes</button>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+    </div>
+  </div>
+
+<% elsif @current_user %>
+
+  <div id="push_down" class="pusher">
+    <div class="ui main text container">
+      <div class="ui horizontal divider">Manage Requests</div>
+      <div class="one wide column"></div>
+      <div class="ui label" id="pending">
+        Request Pending
+      </div>
+      <div class="ui label" id="confirmed">
+        Confirmed Appointment
+      </div>
+      <div class="ui label" id="cancelled">
+        Cancelled Appointment
+      </div>
+      <table class="ui selectable celled table" id="pro_request_table">
+        <thead>
+          <tr>
+            <th>Appointment with</th>
+            <th>Appt. start time</th>
+            <th>Appt. potential end time</th>
+            <th>Details</th>
+            <th>Change Status</th>
+            <th>Contact (open once appointment is confirmed)</th>
+            <th>Confirm Changes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="warning">
+            <td>
+              <h4 class="ui image header">
+                <%= image_tag("mini_avatar.png", class: "ui mini rounded image") %>
+                <div class="content">
+                  Lena
+                  <div class="sub header">Beauty</div>
+                </div>
+              </h4>
+            </td>
+            <td>
+              3:00pm
+            </td>
+            <td>
+              5:00pm
+            </td>
+            <td>
+              Blow and dry
+            </td>
+            <td>
+              <div class="ui dropdown">
+                <div class="text">Pending</div>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <div class="item">Pending</div>
+                    <div class="item">Confirm</div>
+                    <div class="item">Cancel</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              Appointment not confirmed
+            </td>
+            <td>
+              <button class="ui teal button">Confirm Changes</button>
+            </td>
+          </tr>
+        </tbody>
+        </table>
+    </div>
+  </div>
+
+
+
+<% end %>

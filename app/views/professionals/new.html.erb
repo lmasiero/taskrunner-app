@@ -54,6 +54,12 @@
               </div>
             </div>
 
+            <p><strong>Select your servicable areas</strong></p>
+            <p>
+              <%= f.label :areas %><br>
+              <%= f.select :area_ids, Area.all.collect {|x| [x.name, x.id]}, {}, :multiple => true  %>
+            </p>
+
             <p><strong>Please pick a category</strong></p>
             <%= f.select :category_id, Category.all.collect {|x| [x.name, x.id]}%>
 

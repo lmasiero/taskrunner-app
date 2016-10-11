@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project3</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700,800" rel="stylesheet">
+  </head>
+
+
+  <body>
+
+    <div id="fixedUser" class="ui fixed inverted menu">
+      <div class="ui vertically container">
+        <%= link_to image_tag("running.png", :alt => "running_man"), root_path, :class => 'header item', :method => :get %>
+        <%= link_to root_path, :class => "item", :method => :get do%>
+          <i class="bookmark icon"></i>
+          <div class="middle aligned content">About</div>
+        <% end %>
+        <%= link_to requests_path, :class => "item", :method => :get do%>
+          <i class="comments icon"></i>
+          <div class="middle aligned content">Manage Requests</div>
+          <div class="ui teal left pointing label">2</div>
+        <% end %>
+
+        <% if @current_professional %>
+          <div class="ui simple dropdown item">
+            <i class="edit icon"></i>
+            Manage Account <i class="dropdown icon"></i>
+            <div class="menu">
+              <%= link_to edit_professional_path(@professional), :class => "item", :method => :get do%>
+                <div class="middle aligned content">Edit Account</div>
+              <% end %>
+              <%= link_to professional_services_path(@professional), :class => "item", :method => :get do%>
+                  <div class="middle aligned content">Edit Services</div>
+              <% end %>
+            </div>
+          </div>
+        <% elsif @current_user %>
+          <div class="ui simple dropdown item">
+            <i class="edit icon"></i>
+            Manage Account <i class="dropdown icon"></i>
+            <div class="menu">
+              <%= link_to edit_user_path(@user), :class => "item", :method => :get do%>
+                <div class="middle aligned content">Edit Account</div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <%= link_to logout_path, :class => "right item", method: :delete do%>
+          <i class="share icon"></i>
+          <div class="middle aligned content">Log Out</div>
+        <% end %>
+        </div>
+    </div>
+
+    <%= yield %>
+
+    <div class="ui inverted vertical footer segment">
+      <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        <div class="ui horizontal inverted small divided link list">
+          <a class="item" href="#">Site Map</a>
+          <a class="item" href="#">Contact Us</a>
+          <a class="item" href="#">Terms and Conditions</a>
+          <a class="item" href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,6 +1,10 @@
 class RequestsController < ApplicationController
+  layout "request", except: [:new]
+  before_action :is_authenticated
   def index
     @requests = Request.all
+    @professional = @current_professional
+    @user = @current_user
     # if current_user
     #   @requests = Request.where({
     #     user_id: current_user.id

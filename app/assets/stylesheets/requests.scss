@@ -1,3 +1,19 @@
 // Place all the styles related to the requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#pro_request_table {
+  margin-bottom: 20px;
+}
+
+#pending {
+  background-color: rgb(255,250,243)
+}
+
+#confirmed {
+  background-color: rgb(252,255,245)
+}
+
+#cancelled {
+  background-color: rgb(255,246,246)
+}

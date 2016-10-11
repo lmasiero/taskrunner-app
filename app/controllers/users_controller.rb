@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   layout "user", except: [:new]
-  before_action :is_authenticated
+  before_action :is_authenticated, except: [:new, :create]
   before_action :is_authenticated_user, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
