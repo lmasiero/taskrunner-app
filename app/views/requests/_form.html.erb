@@ -1,10 +1,12 @@
+<% pro_id = request.referer.slice( request.referer.index('/', -3) + 1, request.referer.length ) %>
+
 <%= simple_form_for @request, remote: true do |f|   %>
   <%= f.input  :appointment_details, as: :text %>
 
   <div class='input-group date' id='datetimepicker1'>
   	<%= f.input  :start_time %>
     <%= f.input  :end_time %>
-    <%= f.hidden_field :professional_id, :value => request.referer %>
+    <%= f.hidden_field :professional_id, :value => pro_id %>
   </div>
   <%= f.button :submit %>
 <% end %>

@@ -22,13 +22,10 @@ class RequestsController < ApplicationController
 
   # for USER only, not Pro
   def create
-    @request = Request.new(request_params)
-    @professional = Professional.find(params[:professional_id])
-    puts "PROFESSIONAL: " + @professional.to_s
     @current_user = current_user
-    @request.user_id = @current_user.id
+    request_params.user_id = @current_user.id
+    @request = Request.new(request_params)
 
-    puts params.inspect
     puts @request.inspect
 
     if @request.save
