@@ -30,6 +30,11 @@ gem "simple_calendar", "~> 2.0"
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
+# Gems for integrating calendar with Ajax get/post for Requests/new
+gem 'momentjs-rails', '~> 2.15', '>= 2.15.1'
+gem 'jquery-datetimepicker-rails', '~> 2.4', '>= 2.4.1.0'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
