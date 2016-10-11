@@ -18,6 +18,7 @@
       <h3>Click on a date to request <%= @professional.name %>'s services</h3>
 
       <!-- SIMPLE_CALENDAR -->
+      <div id="requests">
       <%= month_calendar events: @requests do |date, requests| %>
         <%= link_to date.to_formatted_s(:short), new_request_path, remote: true %>
 
@@ -27,6 +28,7 @@
           </div>
         <% end %>
       <% end %>
+      </div>
 
       <div id="request-form" style="display:none;"></div>
 
@@ -34,6 +36,7 @@
     <div class="ui horizontal divider"></div>
   </div>
 </div>
+
 <% elsif @current_professional %>
 
 <div id="push_down" class="pusher">

@@ -22,11 +22,14 @@ class RequestsController < ApplicationController
 
   # for USER only, not Pro
   def create
-    # puts params.inspect
-    # puts request_params.inspect
-    # request_params[:start_time] = params[:date] + request_params[:start_time]
-    # Date.new(2015, 2, 10).to_datetime + Time.parse("16:30").seconds_since_midnight.seconds
     @request = Request.new(request_params)
+    @professional = Professional.find(params[:professional_id])
+    puts "PROFESSIONAL: " + @professional.to_s
+    @current_user = current_user
+    @request.user_id = @current_user.id
+
+    puts params.inspect
+    puts @request.inspect
 
     if @request.save
   		redirect_to requests_path, notice: 'Request has been sent to PRO_NAME! We will email you once your request is confirmed (within 1 day)'
@@ -70,6 +73,6 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-  	params.require(:request).permit(:professional_id, :appointment_time, :appointment_details, :start_time)
+  	params.require(:request).permit(:professional_id, :appointment_time, :appointment_details, :start_time, :end_time)
   end
 end

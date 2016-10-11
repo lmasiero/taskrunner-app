@@ -1,0 +1,17 @@
+<li class="list-group-item list-group-item-info">
+  <%= request.appointment_details %>
+
+  <span class="deadline"><%= request.start_time %></span>
+
+  <span class="edit">
+    <%= link_to edit_request_path(request), remote: true do %>
+      <button class="btn btn-primary btn-xs">Edit</button>
+    <% end %>
+
+
+    <%= link_to request, remote: true, method: :delete,
+        data: { confirm: 'Are you sure?' } do %>
+      <button class="btn btn-danger btn-xs">Delete!</button>
+    <% end %>
+  </span>
+</li>

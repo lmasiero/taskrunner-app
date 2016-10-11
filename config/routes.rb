@@ -14,8 +14,4 @@ Rails.application.routes.draw do
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
 
-  # for passing date param into request/new/:date
-  get "requests/new/:date" => "requests#new"
-  post "requests/new/:date" => "requests#create"
-
 end
