@@ -28,6 +28,7 @@ class RequestsController < ApplicationController
     @request[:user_id] = @current_user.id
     @request[:end_time] = request_params[:start_time]
     @request[:status] = "Pending"
+    @request[:last_updated_by] = @current_user.name
 
     if @request.save
   		redirect_to requests_path(@request), notice: 'Request has been sent to PRO_NAME! We will email you once your request is confirmed (within 1 day)'
@@ -55,11 +56,20 @@ class RequestsController < ApplicationController
   def update
     puts "WE GOT TO THE MAIN UPDATE PART"
     if params[:confirmed]
+      if @current_user
+        @request[:last_updated_by] = @current_user.name
+      elsif @current_professional
+        @request[:last_updated_by] = @current_professional.name
+      end
       Request.find(params[:id]).update_attribute(:status, "Confirmed")
       redirect_to requests_url
     else
       @request = Request.find(params[:id])
-
+      if @current_user
+        @request[:last_updated_by] = @current_user.name
+      elsif @current_professional
+        @request[:last_updated_by] = @current_professional.name
+      end
       if @request.update(request_params)
         redirect_to requests_url
       else
