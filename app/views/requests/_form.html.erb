@@ -1,11 +1,16 @@
 <% pro_id = request.referer.slice( request.referer.index('/', -3) + 1, request.referer.length ) %>
 
 <%= simple_form_for @request, remote: true do |f|   %>
-  <%= f.input  :appointment_details, as: :text %>
-
-  <%= f.datetime_field(:start_time) %>
+  <div class="field">
+    <%= f.label :start_time, label: "Choose a date and time" %><br>
+    <%= f.datetime_field :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :appointment_details, label: "Describe the help you need" %><br>
+    <%= f.input :appointment_details, label: false, as: :text, :rows => "2" %>
+  </div>
 
   <%= f.hidden_field :professional_id, :value => pro_id %>
 
-  <%= f.button :submit %>
+  <%= f.button :submit, :class => "ui button" %>
 <% end %>
