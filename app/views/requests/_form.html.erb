@@ -1,5 +1,6 @@
 <% pro_id = request.referer.slice( request.referer.index('/', -3) + 1, request.referer.length ) %>
 
+<div style="margin-bottom: 50px;">
 <%= simple_form_for @request, remote: true do |f|   %>
   <div class="field">
     <%= f.label :start_time, label: "Choose a date and time" %><br>
@@ -14,3 +15,4 @@
 
   <%= f.button :submit, :class => "ui button" %>
 <% end %>
+</div>
