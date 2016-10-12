@@ -13,6 +13,7 @@ $(document).ready(function() {
       var inner2 = $(inner).append(icon)
       var item = $(div1).append(inner2)
       $(item).appendTo("#add_service")
+      // $("submit").on("mouseleave" location.reload)
 
       $(".delete_service").on('click', function(){
         $(this).parent().parent().remove()
