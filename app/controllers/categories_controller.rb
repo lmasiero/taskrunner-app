@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @professionals = Professional.where("category_id" => params[:id])
+    render :layout => "user"
   end
 
   # is_authenticated_admin access
