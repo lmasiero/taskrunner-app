@@ -1,2 +1,55 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div id="push_down" class="pusher">
+  <div class="ui main text container">
+    <div class="two wide column"></div>
+
+    <div class="ui right centered grid" id="push_down_content">
+      <div class="ui items">
+        <div class="item">
+          <a class="ui tiny image">
+            <%= image_tag("reviewer.png") %>
+          </a>
+          <div class="content">
+            <div class="description">
+              Your last login was on xxx
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="ui sortable teal table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Area(s)</th>
+          <th>Usual Availability</th>
+          <th>Services</th>
+          <th>See calendar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @professionals.each do |professional| %>
+        <tr>
+          <td><%= professional.name %></td>
+          <td>East,West</td>
+          <td>Mon-Fri, 9am-5pm</td>
+          <td>
+          <% professional.services.each do |service| %>
+            <span><%= service.name %>, </span>
+          <% end %>
+          </td>
+          <td>
+            <%= link_to professional_path(professional), :method => :get do%>
+              <i class="calendar icon"></i>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+
+      </tbody>
+    </table>
+
+  <div class="ui horizontal divider"></div>
+
+  </div>
+</div>

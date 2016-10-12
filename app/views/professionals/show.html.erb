@@ -1,41 +1,72 @@
 <% if @current_user %>
 
-<div id="push_down" class="pusher">
-  <div class="ui main text container">
+<div id="push_down_pro" class="pusher">
+
+  <div class="ui stackable grid">
+
     <div class="two wide column"></div>
-    <div class="content">
-      <h3>
-        <%= @professional.name %> offers the following services:
-      </h3>
-      <ol>
-      <% @services.each do |service| %>
-        <li>
-            <%= service.name %>
-        </li>
-      <% end %>
-      </ol>
 
+    <div class="four wide column center aligned">
+      <div class="ui link cards">
+        <div class="card">
+          <div class="image">
+            <%= image_tag("avatar.png") %>
+          </div>
+          <div class="content">
+            <div class="header"><%= @professional.name%></div>
+            <div class="meta">
+              <a>Current Category: <%= @professional.category.name %></a>
+            </div>
+          </div>
+          <div class="extra content">
+            <p>
+              <strong>Current Services: </strong>
+              <ul class="ui middle aligned divided list" id="add_service">
+                <% if @services.present? %>
+                  <% @services.each do |service| %>
+                    <div class="item">
+                      <div class="content">
+                        <%= service.name %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eight wide column center aligned">
       <h3>Click on a date to request <%= @professional.name %>'s services</h3>
-
       <!-- SIMPLE_CALENDAR -->
       <div id="requests">
-      <%= month_calendar events: @requests do |date, requests| %>
-        <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, :class => date %>
-
-        <% requests.each do |request| %>
-          <div>
-              <%= request.appointment_details %>
+        <%= month_calendar events: @requests do |date, requests| %>
+          <% if (0..2).include?(requests.length) %>
+            <div>
+          <% elsif (2..4).include?(requests.length) %>
+            <div class="ui yellow inverted">
+          <% else %>
+            <div class="ui orange inverted">
+          <% end %>
+          <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, :class => date %>
           </div>
         <% end %>
-      <% end %>
       </div>
-
-      <div id="request-form" style="display:none;"></div>
-
     </div>
-    <div class="ui horizontal divider"></div>
-  </div>
+
+    <div class="two wide column"></div>
+
+    <div class="four wide column"></div>
+    <div class="eight wide column aligned">
+      <div id="request-form" style="display:none;"></div>
+    </div>
+    <div class="four wide column"></div>
+
+  <div class="ui horizontal divider"></div>
 </div>
+
 
 <% elsif @current_professional %>
 

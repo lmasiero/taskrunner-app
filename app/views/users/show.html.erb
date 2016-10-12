@@ -1,6 +1,7 @@
 <div id="push_down" class="pusher">
   <div class="ui main text container">
     <div class="two wide column"></div>
+
     <div class="ui right centered grid" id="push_down_content">
       <div class="ui items">
         <div class="item">
@@ -16,11 +17,14 @@
         </div>
       </div>
     </div>
+
     <div class="ui horizontal divider">Welcome back!</div>
     <h2 id="push_down_categories">Browse our categories</h2>
+
     <div class="ui right centered grid">
       <%= image_tag("tree.png",:id=>"tree") %>
     </div>
+
     <div class="ui list center_list">
       <% @categories.each do |category| %>
         <div class="item">
