@@ -1,6 +1,11 @@
 <% pro_id = request.referer.slice( request.referer.index('/', -3) + 1, request.referer.length ) %>
 
-<%= simple_form_for @request, remote: true do |f|   %>
+<h2>
+  New service request
+</h2>
+
+<div style="margin-bottom: 50px;">
+<%= simple_form_for @request, remote: true, html: { :class => 'ui form'} do |f| %>
   <div class="field">
     <%= f.label :start_time, label: "Choose a date and time" %><br>
     <%= f.datetime_field :start_time %>
@@ -12,5 +17,6 @@
 
   <%= f.hidden_field :professional_id, :value => pro_id %>
 
-  <%= f.button :submit, :class => "ui button" %>
+  <%= f.button :submit, :class => "ui teal button" %>
 <% end %>
+</div>

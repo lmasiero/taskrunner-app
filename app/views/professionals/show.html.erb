@@ -2,13 +2,11 @@
 
 <div id="push_down_pro" class="pusher">
 
-  <div class="ui stackable grid">
+  <div class="ui main container stackable grid centered">
+    <div class="one wide column"></div>
 
-    <div class="two wide column"></div>
-
-    <div class="four wide column center aligned">
-      <div class="ui link cards">
-        <div class="card">
+    <div class="five wide column">
+        <div class="ui teal card">
           <div class="image">
             <%= image_tag("avatar.png") %>
           </div>
@@ -35,37 +33,43 @@
             </p>
           </div>
         </div>
-      </div>
+
     </div>
 
-    <div class="eight wide column center aligned">
+    <div class="nine wide column right">
       <h3>Click on a date to request <%= @professional.name %>'s services</h3>
       <!-- SIMPLE_CALENDAR -->
       <div id="requests">
         <%= month_calendar events: @requests do |date, requests| %>
           <% if (0..2).include?(requests.length) %>
-            <div>
+            <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true %>
           <% elsif (2..4).include?(requests.length) %>
-            <div class="ui yellow inverted">
+            <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, class: "quite-busy" %>
           <% else %>
-            <div class="ui orange inverted">
+            <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, class: "very-busy" %>
           <% end %>
-          <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, :class => date %>
-          </div>
         <% end %>
       </div>
     </div>
 
-    <div class="two wide column"></div>
+    <div class="one wide column"></div>
 
-    <div class="four wide column"></div>
-    <div class="eight wide column aligned">
+    <div class="one wide column"></div>
+    <div class="fourteen wide column left">
       <div id="request-form" style="display:none;"></div>
     </div>
-    <div class="four wide column"></div>
+    <div class="one wide column"></div>
 
   <div class="ui horizontal divider"></div>
 </div>
+
+<script>
+  $(document).ready(function () {
+    $('.quite-busy').parent().css( "background-color", "#ECC087" );
+
+    $('.very-busy').parent().css( "background-color", "#EC9598" );
+  })
+</script>
 
 
 <% elsif @current_professional %>

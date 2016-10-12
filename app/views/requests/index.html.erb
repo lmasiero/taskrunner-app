@@ -2,68 +2,74 @@
   <div id="push_down" class="pusher">
     <div class="ui main text container">
       <div class="ui horizontal divider">Manage Requests</div>
-      <div class="one wide column"></div>
+      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+    </div>
+    <div class="ui container">
       <div class="ui label" id="pending">
         Request Pending
       </div>
       <div class="ui label" id="confirmed">
         Confirmed Appointment
       </div>
-      <div class="ui label" id="cancelled">
-        Cancelled Appointment
-      </div>
-      <table class="ui selectable celled table" id="pro_request_table">
+      <table class="ui selectable table" id="pro_request_table">
         <thead>
           <tr>
             <th>Appointment with</th>
-            <th>Appt. start time</th>
-            <th>Appt. potential end time</th>
+            <th>Start time</th>
+            <th>Potential end time</th>
             <th>Details</th>
-            <th>Change Status</th>
-            <th>Contact (open once appointment is confirmed)</th>
-            <th>Confirm Changes</th>
+            <th>Contact</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr class="warning">
-            <td>
-              <h4 class="ui image header">
-                <%= image_tag("mini_avatar.png", class: "ui mini rounded image") %>
-                <div class="content">
-                  Lena
-                  <div class="sub header">Beauty</div>
-                </div>
-              </h4>
-            </td>
-            <td>
-              3:00pm
-            </td>
-            <td>
-              5:00pm
-            </td>
-            <td>
-              Blow and dry
-            </td>
-            <td>
-              <div class="ui dropdown">
-                <div class="text">Pending</div>
-                  <i class="dropdown icon"></i>
-                  <div class="menu">
-                    <div class="item">Pending</div>
-                    <div class="item">Confirm</div>
-                    <div class="item">Cancel</div>
-                </div>
-              </div>
-            </td>
-            <td>
-              Appointment not confirmed
-            </td>
-            <td>
-              <button class="ui teal button">Make Changes</button>
-            </td>
-          </tr>
+          <% @requests.each do |request| %>
+            <% if request.status == "Pending" %>
+              <tr class="warning">
+            <% elsif request.status == "Confirmed" %>
+              <tr class="positive">
+            <% end %>
+              <td>
+                <h4 class="ui image header">
+                  <%= image_tag("mini_avatar.png", class: "ui mini rounded image") %>
+                  <div class="content">
+                    <%= User.find(request.user_id).name %>
+                  </div>
+                </h4>
+              </td>
+              <td>
+                <%= request.start_time.strftime('%C %b, %Y : %I:%M %P') %>
+              </td>
+              <td>
+                <%= request.end_time.strftime('%C %b, %Y : %I:%M %P') %>
+              </td>
+              <td>
+                <%= request.appointment_details %>
+              </td>
+              <td>
+              <% if request.status == "Pending" %>
+                  Appointment not confirmed
+              <% elsif request.status == "Confirmed" %>
+                  <%= User.find(request.user_id).mobile_number %>
+              <% end %>
+              </td>
+              <td>
+              <% if request.status == "Pending" %>
+                <%= link_to "Edit", edit_request_path(request), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "user_req_modal" %>
+              <% elsif request.status == "Confirmed" %>
+                No longer editable
+              <% end %>
+              </td>
+              <td>
+                <%= link_to "Cancel appointment", request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } %>
+              </td>
+              <td><strong>Last Updated by : Betty</strong></td>
+            </tr>
+          <% end %>
         </tbody>
-        </table>
+      </table>
     </div>
   </div>
 
@@ -72,31 +78,35 @@
   <div id="push_down" class="pusher">
     <div class="ui main text container">
       <div class="ui horizontal divider">Manage Requests</div>
-      <div class="one wide column"></div>
+      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+    </div>
+    <div class="ui container">
       <div class="ui label" id="pending">
         Request Pending
       </div>
       <div class="ui label" id="confirmed">
         Confirmed Appointment
       </div>
-      <div class="ui label" id="cancelled">
-        Cancelled Appointment
-      </div>
-      <table class="ui selectable celled table" id="pro_request_table">
+      <table class="ui selectable table" id="pro_request_table">
         <thead>
           <tr>
             <th>Appointment with</th>
-            <th>Appt. start time</th>
-            <th>Appt. potential end time</th>
+            <th>Start time</th>
+            <th>Potential end time</th>
             <th>Details</th>
-            <th>Change Status</th>
-            <th>Contact (open once appointment is confirmed)</th>
-            <th>Confirm Changes</th>
+            <th>Contact</th>
+            <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @requests.each do |request| %>
-            <tr class="warning">
+            <% if request.status == "Pending" %>
+              <tr class="warning">
+            <% elsif request.status == "Confirmed" %>
+              <tr class="positive">
+            <% end %>
               <td>
                 <h4 class="ui image header">
                   <%= image_tag("mini_avatar.png", class: "ui mini rounded image") %>
@@ -106,28 +116,38 @@
                 </h4>
               </td>
               <td>
-                <%= request.start_time %>
+                <p><strong>Start</strong></p>
+                <%= request.start_time.strftime('%C %b, %Y : %I:%M %P') %>
               </td>
               <td>
-                <%= request.end_time %>
+                <p><strong>End</strong></p>
+                <%= request.end_time.strftime('%C %b, %Y : %I:%M %P') %>
               </td>
               <td>
                 <%= request.appointment_details %>
               </td>
               <td>
-                <%= request.status %>
+                <% if request.status == "Pending" %>
+                    Appointment not confirmed
+                <% elsif request.status == "Confirmed" %>
+                    <%= Professional.find(request.professional_id).mobile_number %>
+                <% end %>
               </td>
               <td>
-                Appointment not confirmed
+                <% if request.status == "Pending" %>
+                  <%= link_to "Edit", edit_request_path(request), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "user_req_modal" %>
+                <% elsif request.status == "Confirmed" %>
+                  No longer editable
+                <% end %>
               </td>
               <td>
-                <%= link_to "Edit", edit_request_path(request), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "user_req_modal" %>
+                <%= link_to "Cancel appointment", request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } %>
               </td>
+              <td><strong>Last Updated by :</strong> Betty</td>
             </tr>
           <% end %>
         </tbody>
-        </table>
-      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+      </table>
     </div>
   </div>
 
