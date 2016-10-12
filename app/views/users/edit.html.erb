@@ -38,5 +38,6 @@
           <%= f.submit "Make changes", :class => "ui fluid large teal submit button" %>
         </div>
       <% end %>
+      <%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
 </div>

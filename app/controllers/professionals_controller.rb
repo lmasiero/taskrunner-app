@@ -65,7 +65,7 @@ class ProfessionalsController < ApplicationController
   def destroy
     @professional.destroy
     respond_to do |format|
-      format.html { redirect_to professionals_url, notice: 'Professional was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Professional was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

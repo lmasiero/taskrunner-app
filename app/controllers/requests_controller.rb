@@ -2,9 +2,13 @@ class RequestsController < ApplicationController
   layout "request", except: [:new]
   before_action :is_authenticated
   def index
-    @user = @current_user
-    @requests = @user.requests
-    @professional = @current_professional
+    if @current_user
+      @user = @current_user
+      @requests = @user.requests
+    elsif @current_professional
+      @professional = @current_professional
+      @requests = @professional.requests
+    end
   end
 
   # for USER only, not Pro
@@ -45,29 +49,32 @@ class RequestsController < ApplicationController
   # for pro to accept/reject, see main_controller (security)
   def edit
     @request = Request.find(params[:id])
-    puts "WE GOT TO THE EDIT PART"
   end
 
   # for USER only, not Pro
   def update
-    puts "WE GOT TO THE UPDATE PART"
-    @request = Request.find(params[:id])
-
-    if @request.update(request_params)
+    puts "WE GOT TO THE MAIN UPDATE PART"
+    if params[:confirmed]
+      Request.find(params[:id]).update_attribute(:status, "Confirmed")
       redirect_to requests_url
     else
-      render "edit"
+      @request = Request.find(params[:id])
+
+      if @request.update(request_params)
+        redirect_to requests_url
+      else
+        render "edit"
+      end
     end
   end
 
   # for USER only, not Pro
   def destroy
     Request.find(params[:id]).delete
-    redirect_to categories_url
+    redirect_to requests_url
   end
 
   private
-
   def request_params
   	params.require(:request).permit(:professional_id, :appointment_time, :appointment_details, :start_time, :start_time_time, :end_time, @selected_date)
   end

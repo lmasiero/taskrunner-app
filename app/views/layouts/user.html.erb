@@ -22,9 +22,12 @@
         <%= link_to requests_path, :class => "item", :method => :get do%>
           <i class="comments icon"></i>
           <div class="middle aligned content">Manage Requests</div>
-          <div class="ui teal left pointing label">2</div>
+          <% if @current_user %>
+              <div class="ui teal left pointing label"><%= Request.where(:user_id => @current_user.id).count %></div>
+            <% elsif @current_professional %>
+              <div class="ui teal left pointing label"><%= Request.where(:professional_id => @current_professional.id).count %></div>
+          <% end %>
         <% end %>
-
         <div class="ui simple dropdown item">
           <i class="edit icon"></i>
           Manage Account <i class="dropdown icon"></i>
