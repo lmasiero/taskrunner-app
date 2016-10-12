@@ -32,7 +32,7 @@
           <i class="edit icon"></i>
           Manage Account <i class="dropdown icon"></i>
           <div class="menu">
-            <%= link_to edit_user_path, :class => "item", :method => :get do%>
+            <%= link_to edit_user_path(@current_user), :class => "item", :method => :get do%>
               <div class="middle aligned content">Edit Account</div>
             <% end %>
           </div>
