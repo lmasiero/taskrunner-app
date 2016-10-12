@@ -2,19 +2,9 @@ class RequestsController < ApplicationController
   layout "request", except: [:new]
   before_action :is_authenticated
   def index
-    @requests = Request.all
-    @professional = @current_professional
     @user = @current_user
-    # if current_user
-    #   @requests = Request.where({
-    #     user_id: current_user.id
-    #     })
-    # elsif current_pro
-    #   @requests = Request.where({
-    #     pro_id: current_pro.id,
-    #     status: 'pending'
-    #     })
-    # end
+    @requests = @user.requests
+    @professional = @current_professional
   end
 
   # for USER only, not Pro
@@ -32,11 +22,11 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @current_user = current_user
     @request[:user_id] = @current_user.id
-
     @request[:end_time] = request_params[:start_time]
+    @request[:status] = "Pending"
 
     if @request.save
-  		redirect_to requests_path, notice: 'Request has been sent to PRO_NAME! We will email you once your request is confirmed (within 1 day)'
+  		redirect_to requests_path(@request), notice: 'Request has been sent to PRO_NAME! We will email you once your request is confirmed (within 1 day)'
   	else
   		render :new, notice: 'Something went wrong - please try again'
   	end
@@ -55,10 +45,12 @@ class RequestsController < ApplicationController
   # for pro to accept/reject, see main_controller (security)
   def edit
     @request = Request.find(params[:id])
+    puts "WE GOT TO THE EDIT PART"
   end
 
   # for USER only, not Pro
   def update
+    puts "WE GOT TO THE UPDATE PART"
     @request = Request.find(params[:id])
 
     if @request.update(request_params)
@@ -79,4 +71,5 @@ class RequestsController < ApplicationController
   def request_params
   	params.require(:request).permit(:professional_id, :appointment_time, :appointment_details, :start_time, :start_time_time, :end_time, @selected_date)
   end
+
 end

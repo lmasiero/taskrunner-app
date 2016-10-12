@@ -1,0 +1,38 @@
+  <i class="close icon"></i>
+  <div class="image content">
+    <div class="ui medium image">
+      <%= image_tag("large_avatar.png", class: 'image') %>
+    </div>
+    <div class="description">
+      <div class="ui header">Edit appointment request</div>
+      <p></p>
+    </div>
+  </div>
+<div class="ui right aligned center aligned grid" style= "overflow-y:auto;white-space:nowrap;height:250px;">
+  <%= form_for :request, url: request_path(@request), :html => {:class => "ui form"}, remote: true, method: :patch do |f| %>
+    <div class="field">
+      <label>Change appointment details</label>
+      <%= f.text_area  :appointment_details%>
+    </div>
+    <div class="field">
+      <label>Appointment to start at:</label>
+      <%= f.datetime_field(:start_time) %>
+    </div>
+    <div class="field">
+      <label>Appointment to end at (approximate):</label>
+      <%= f.datetime_field(:end_time) %>
+    </div>
+    <div class="field">
+      <div class="ui selection dropdown">
+        <input type="hidden" name="gender">
+        <i class="dropdown icon"></i>
+        <div class="default text">Change appointment status</div>
+        <div class="menu">
+          <div class="item">Pending (still need to work through dome details)</div>
+          <div class="item">Confirm details and make appointment!</div>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "Submit changes", :class => "ui fluid large teal submit button" %>
+  <% end %>
+</div>

@@ -1,4 +1,2 @@
-$('#request-form').html("<%= escape_javascript(render 'form') %>");
-$('#request-form').slideDown(350);
-
-<%= render 'datetimepicker' %>
+$("#user_req_modal").html("<%= escape_javascript(render 'req_change_user') %>");
+$(".ui.small.modal").modal('show')
