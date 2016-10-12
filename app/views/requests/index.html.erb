@@ -2,21 +2,24 @@
   <div id="push_down" class="pusher">
     <div class="ui main text container">
       <div class="ui horizontal divider">Manage Requests</div>
-      <div class="one wide column"></div>
+      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+    </div>
+    <div class="ui container">
       <div class="ui label" id="pending">
         Request Pending
       </div>
       <div class="ui label" id="confirmed">
         Confirmed Appointment
       </div>
-      <table class="ui selectable celled table" id="pro_request_table">
+      <table class="ui selectable table" id="pro_request_table">
         <thead>
           <tr>
             <th>Appointment with</th>
             <th>Start time</th>
             <th>Potential end time</th>
             <th>Details</th>
-            <th>Contact (open once appointment is confirmed)</th>
+            <th>Contact</th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>
@@ -37,10 +40,10 @@
                 </h4>
               </td>
               <td>
-                <%= request.start_time %>
+                <%= request.start_time.strftime('%C %b, %Y : %I:%M %P') %>
               </td>
               <td>
-                <%= request.end_time %>
+                <%= request.end_time.strftime('%C %b, %Y : %I:%M %P') %>
               </td>
               <td>
                 <%= request.appointment_details %>
@@ -60,13 +63,13 @@
               <% end %>
               </td>
               <td>
-                <%= link_to "Cancel appointment", request, method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= link_to "Cancel appointment", request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } %>
               </td>
+              <td><strong>Last Updated by : Betty</strong></td>
             </tr>
           <% end %>
         </tbody>
-        </table>
-      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+      </table>
     </div>
   </div>
 
@@ -75,21 +78,24 @@
   <div id="push_down" class="pusher">
     <div class="ui main text container">
       <div class="ui horizontal divider">Manage Requests</div>
-      <div class="one wide column"></div>
+      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+    </div>
+    <div class="ui container">
       <div class="ui label" id="pending">
         Request Pending
       </div>
       <div class="ui label" id="confirmed">
         Confirmed Appointment
       </div>
-      <table class="ui selectable celled table" id="pro_request_table">
+      <table class="ui selectable table" id="pro_request_table">
         <thead>
           <tr>
             <th>Appointment with</th>
             <th>Start time</th>
             <th>Potential end time</th>
             <th>Details</th>
-            <th>Contact (open once appointment is confirmed)</th>
+            <th>Contact</th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>
@@ -110,10 +116,12 @@
                 </h4>
               </td>
               <td>
-                <%= request.start_time %>
+                <p><strong>Start</strong></p>
+                <%= request.start_time.strftime('%C %b, %Y : %I:%M %P') %>
               </td>
               <td>
-                <%= request.end_time %>
+                <p><strong>End</strong></p>
+                <%= request.end_time.strftime('%C %b, %Y : %I:%M %P') %>
               </td>
               <td>
                 <%= request.appointment_details %>
@@ -133,13 +141,13 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to "Cancel appointment", request, method: :delete, data: { confirm: "Are you sure?" } %>
+                <%= link_to "Cancel appointment", request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } %>
               </td>
+              <td><strong>Last Updated by :</strong> Betty</td>
             </tr>
           <% end %>
         </tbody>
-        </table>
-      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+      </table>
     </div>
   </div>
 
