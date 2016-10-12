@@ -1,12 +1,14 @@
 class CategoriesController < ApplicationController
+  layout "category"
+
   def index
     @categories = Category.all
   end
 
   def show
+    @current_user = current_user
     @category = Category.find(params[:id])
     @professionals = Professional.where("category_id" => params[:id])
-    render :layout => "user"
   end
 
   # is_authenticated_admin access
