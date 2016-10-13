@@ -7,16 +7,16 @@ class SessionsController < ApplicationController
     user = User.authenticate(user_params)
     if user
       session[:user_email] = user.email
-      flash[:success] = "User logged in!!"
+      flash[:success] = "Successfully logged in."
       redirect_to user_path(user.id)
     else
         pro = Professional.authenticate(user_params)
       if pro
         session[:user_email] = pro.email
-        flash[:success] = "User logged in!!"
+        flash[:success] = "Successfully logged in."
         redirect_to professional_path(pro.id)
       else
-        flash[:danger] = "Credentials Invalid!!"
+        flash[:danger] = "The credentials you've entered are invalid."
         redirect_to login_path
       end
     end

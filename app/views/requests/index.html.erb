@@ -1,5 +1,8 @@
 <% if @current_professional %>
   <div id="push_down" class="pusher">
+
+    <div class="row"><%= render "partials/flash" %></div>
+
     <div class="ui main text container">
       <div class="ui horizontal divider">Manage Requests</div>
       <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
@@ -87,6 +90,9 @@
 <% elsif @current_user %>
 
   <div id="push_down" class="pusher">
+
+    <div class="row"><%= render "partials/flash" %></div>
+
     <div class="ui main text container">
       <div class="ui horizontal divider">Manage Requests</div>
       <div class="ui small modal" id="user_req_modal" style="display:none;"></div>

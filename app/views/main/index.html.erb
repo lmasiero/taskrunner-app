@@ -1,3 +1,30 @@
+<div class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Choose Sign Up
+  </div>
+  <div class="image content">
+    <div class="image">
+      <i class="users icon"></i>
+    </div><br>
+    <div class="description">
+      <h3>Are you signing up as a service provider or seeker?</h3>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="two fluid ui inverted buttons">
+      <div class="ui basic inverted button">
+        <i class="user icon"></i>
+        <%= link_to "Service Seeker", new_user_path, :class => "signup_choice", :method => :get %>
+      </div>
+      <div class="ui basic inverted button">
+        <i class="doctor icon"></i>
+        <%= link_to "Service Provider", new_professional_path, :class => "signup_choice", :method => :get %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id= "fixed" class="ui large top fixed hidden menu" style="display: none;">
   <div class="ui container">
     <%= link_to "Home", root_path, :class => "active item", :method => :get %>
@@ -38,7 +65,7 @@
         <%= link_to "Careers", root_path, :class => "item", :method => :get %>
         <div class="right item">
           <%= button_to "Log In", login_path, :id => "login", :class => "ui inverted button", :method => :get %>
-          <a class="ui inverted button signup">Sign Up</a>
+          <a class="ui inverted teal button signup">Sign Up</a>
         </div>
       </div>
     </div>
@@ -123,33 +150,6 @@
           <p>Nick Ang</p>
           <p>Bright Chew</p>
           <p>Mikella Seth</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ui basic modal">
-    <i class="close icon"></i>
-    <div class="header">
-      Choose Sign Up
-    </div>
-    <div class="image content">
-      <div class="image">
-        <i class="users icon"></i>
-      </div><br>
-      <div class="description">
-        <h3>Are you signing up as a service provider or seeker?</h3>
-      </div>
-    </div>
-    <div class="actions">
-      <div class="two fluid ui inverted buttons">
-        <div class="ui basic inverted button">
-          <i class="user icon"></i>
-          <%= link_to "Service Seeker", new_user_path, :class => "signup_choice", :method => :get %>
-        </div>
-        <div class="ui basic inverted button">
-          <i class="doctor icon"></i>
-          <%= link_to "Service Provider", new_professional_path, :class => "signup_choice", :method => :get %>
         </div>
       </div>
     </div>
