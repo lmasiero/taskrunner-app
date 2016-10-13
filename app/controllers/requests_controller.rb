@@ -56,6 +56,7 @@ class RequestsController < ApplicationController
 
   # for USER only, not Pro
   def update
+    @request = Request.find(params[:id])
     if params[:confirmed]
       if @current_user
         @request[:last_updated_by] = @current_user.name

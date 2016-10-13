@@ -54,6 +54,7 @@
           <% else %>
             <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, class: "very-busy" %>
           <% end %>
+          <% end %>
         </div>
       </div>
 
@@ -78,7 +79,6 @@
     $('.very-busy').parent().css( "background-color", "#EC9598" );
   })
 </script>
-
 
 <% elsif @current_professional %>
 
