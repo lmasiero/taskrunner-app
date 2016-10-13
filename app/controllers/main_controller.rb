@@ -9,4 +9,7 @@ class MainController < ApplicationController
       redirect_to @current_professional
     end
   end
+
+  def team
+  end
 end
