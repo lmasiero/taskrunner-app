@@ -6,12 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto:300" rel="stylesheet">
   </head>
 
 
   <body>
 
+    <!-- NAVBAR for professional -->
     <div id="fixedUser" class="ui fixed inverted menu">
       <div class="ui vertically container">
         <%= link_to image_tag("running.png", :alt => "running_man"), root_path, :class => 'header item', :method => :get %>
@@ -26,7 +27,7 @@
               <div class="ui teal left pointing label"><%= Request.where(:user_id => @current_user.id).count %></div>
             <% elsif @current_professional %>
               <div class="ui teal left pointing label"><%= Request.where(:professional_id => @current_professional.id).count %></div>
-          <% end %>      
+          <% end %>
         <% end %>
 
         <div class="ui simple dropdown item">
@@ -48,7 +49,11 @@
         </div>
     </div>
 
-    <%= yield %>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+
+    <div class="push"></div>
 
     <div class="ui inverted vertical footer segment">
       <div class="ui center aligned container">

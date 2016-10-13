@@ -1,81 +1,83 @@
 <div id="push_down" class="pusher">
-  <div class="ui main text container">
-    <div class="two wide column"></div>
+  <div class="row"><%= render "partials/flash" %></div>
 
+  <div class="ui main text container">
     <div class="ui right centered grid" id="push_down_content">
+
       <div class="ui items">
         <div class="item">
           <a class="ui tiny image">
             <%= image_tag("reviewer.png") %>
           </a>
-          <div class="content">
-            <a class="header">Hi, <%=@user.name%>!</a>
+          <div class="content middle aligned">
+            <a class="header">Hi, <%=@user.name%></a>
             <div class="description">
-              Your last login was on xxx
+              Good to see you!
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="ui horizontal divider">Welcome back!</div>
-    <h2 id="push_down_categories">Browse our categories</h2>
+    <div class="ui hidden divider"></div>
+    <div class="ui hidden divider"></div>
 
-    <div class="ui right centered grid">
+    <div class="ui horizontal divider">What services are you looking for today?</div>
+    <h2 class="ui text centralise" id="push_down_categories">Browse by Category</h2>
+
+    <div class="ui centered grid">
       <%= image_tag("tree.png",:id=>"tree") %>
     </div>
 
-    <div class="ui list center_list">
+    <div class="ui list center_list margin_top">
       <% @categories.each do |category| %>
         <div class="item">
           <i class="map marker icon"></i>
           <div class="content">
-            <a class="header" href="/categories/<%= category.id %>"><%= category.name %></a>
-            <div class="description">
-              <span class="numbers">
-                <%= @professionals.where(:category => category.id).length %> task runners
-              </span> currently providing services for home/location reparation
-            </div>
+            <a class="header" href="/categories/<%= category.id %>"><%= category.name %> </a>
+            <span class="numbers">
+              <%= @professionals.where(:category => category.id).length %> professionals currently available for booking
+            </span>
+
           </div>
         </div>
       <% end %>
     </div>
 
+    <div class="ui hidden divider"></div>
     <div class="ui horizontal divider">or</div>
+    <div class="ui hidden divider"></div>
 
     <!-- SEARCH -->
-    <h2>Do a quick search</h2>
-    <div class="ui search">
-      <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Search...">
-        <i class="search icon"></i>
-      </div>
-      <div class="results"></div>
-    </div>
-    <table class="ui sortable teal table">
+    <h2 class="centralise">Do a Quick Search</h2>
+    <table class="ui sortable teal table" id="table_search">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Area(s)</th>
-          <th>Usual Availability</th>
-          <th>Services</th>
-          <th>See calendar</th>
+          <th class="center aligned">Name</th>
+          <th class="center aligned">Area(s)</th>
+          <th class="center aligned">Usual Availability</th>
+          <th class="center aligned">Services</th>
+          <th class="center aligned">Book</th>
         </tr>
       </thead>
       <tbody>
         <% @professionals.each do |professional| %>
         <tr>
           <td><%= professional.name %></td>
-          <td>East,West</td>
+          <td>
+            <% professional.areas.each do |area| %>
+              <span><%= area.name %>, </span>
+            <% end %>
+          </td>
           <td>Mon-Fri, 9am-5pm</td>
           <td>
           <% professional.services.each do |service| %>
             <span><%= service.name %>, </span>
           <% end %>
           </td>
-          <td>
+          <td class="center aligned selectable">
             <%= link_to professional_path(professional), :method => :get do%>
-              <i class="calendar icon"></i>
+              <i class="calendar icon teal"></i>
             <% end %>
           </td>
         </tr>
@@ -85,5 +87,8 @@
     </table>
     <div class="two wide column"></div>
   </div>
+
+  <div class="ui hidden divider"></div>
+
 
 </div>

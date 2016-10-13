@@ -6,7 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto:300" rel="stylesheet">
   </head>
 
 
@@ -60,7 +60,11 @@
         </div>
     </div>
 
-    <%= yield %>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+
+    <div class="push"></div>
 
     <div class="ui inverted vertical footer segment">
       <div class="ui center aligned container">

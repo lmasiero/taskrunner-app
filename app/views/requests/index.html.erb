@@ -1,9 +1,20 @@
 <% if @current_professional %>
   <div id="push_down" class="pusher">
-    <div class="ui main text container">
-      <div class="ui horizontal divider">Manage Requests</div>
-      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+
+    <div class="row"><%= render "partials/flash" %></div>
+
+    <div class="ui middle aligned center aligned grid">
+      <div class="column">
+        <h2 class="ui image header">
+          <i class="calendar icon"></i>
+          <div class="content">
+            Manage Requests
+          </div>
+        </h2>
+      </div>
     </div>
+
+    <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
     <div class="ui container">
       <div class="ui label" id="pending">
         Request Pending
@@ -55,17 +66,28 @@
                   <%= User.find(request.user_id).mobile_number %>
               <% end %>
               </td>
-              <td>
-              <% if request.status == "Pending" %>
-                <%= link_to "Edit", edit_request_path(request), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "user_req_modal" %>
-              <% elsif request.status == "Confirmed" %>
-                No longer editable
-              <% end %>
+              <td><strong>Last Updated by :</strong>
+                <% if request.last_updated_by == User.find(request.user_id).name %>
+                  <%= User.find(request.user_id).name %>
+                <% elsif request.last_updated_by == Professional.find(request.professional_id).name %>
+                  <%= Professional.find(request.professional_id).name %>
+                <% end %>
               </td>
               <td>
-                <%= link_to "Cancel appointment", request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } %>
+                <% if request.status == "Pending" %>
+                  <%= link_to edit_request_path(request), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "user_req_modal" do %>
+                    <i class="edit icon"></i>
+                  <% end %>
+                <% elsif request.status == "Confirmed" %>
+                  <i class="checked calendar icon"></i>
+                  No longer editable
+                <% end %>
               </td>
-              <td><strong>Last Updated by : Betty</strong></td>
+              <td>
+                <%= link_to request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } do %>
+                  <i class="delete calendar icon"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -76,10 +98,22 @@
 <% elsif @current_user %>
 
   <div id="push_down" class="pusher">
-    <div class="ui main text container">
-      <div class="ui horizontal divider">Manage Requests</div>
-      <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+
+    <div class="row"><%= render "partials/flash" %></div>
+
+    <div class="ui middle aligned center aligned grid">
+      <div class="column">
+        <h2 class="ui image header">
+          <i class="calendar icon"></i>
+          <div class="content">
+            Manage Requests
+          </div>
+        </h2>
+      </div>
     </div>
+
+    <div class="ui small modal" id="user_req_modal" style="display:none;"></div>
+
     <div class="ui container">
       <div class="ui label" id="pending">
         Request Pending
@@ -133,17 +167,28 @@
                     <%= Professional.find(request.professional_id).mobile_number %>
                 <% end %>
               </td>
+              <td><strong>Last Updated by :</strong>
+                <% if request.last_updated_by == User.find(request.user_id).name %>
+                  <%= User.find(request.user_id).name %>
+                <% elsif request.last_updated_by == Professional.find(request.professional_id).name %>
+                  <%= Professional.find(request.professional_id).name %>
+                <% end %>
+              </td>
               <td>
                 <% if request.status == "Pending" %>
-                  <%= link_to "Edit", edit_request_path(request), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "user_req_modal" %>
+                  <%= link_to edit_request_path(request), :class => "btn", :remote => true, "data-toggle" => "modal", "data-target" => "user_req_modal" do %>
+                    <i class="edit icon"></i>
+                  <% end %>
                 <% elsif request.status == "Confirmed" %>
+                  <i class="checked calendar icon"></i>
                   No longer editable
                 <% end %>
               </td>
               <td>
-                <%= link_to "Cancel appointment", request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } %>
+                <%= link_to request, method: :delete, :class => "cancel_appt", data: { confirm: "Are you sure?" } do %>
+                  <i class="delete calendar icon"></i>
+                <% end %>
               </td>
-              <td><strong>Last Updated by :</strong> Betty</td>
             </tr>
           <% end %>
         </tbody>

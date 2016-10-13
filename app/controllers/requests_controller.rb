@@ -28,11 +28,14 @@ class RequestsController < ApplicationController
     @request[:user_id] = @current_user.id
     @request[:end_time] = request_params[:start_time]
     @request[:status] = "Pending"
+    @request[:last_updated_by] = @current_user.name
 
     if @request.save
-  		redirect_to requests_path(@request), notice: 'Request has been sent to PRO_NAME! We will email you once your request is confirmed (within 1 day)'
+      flash[:success] = "Request sent. You will receive an email once request is confirmed (usually within 1 day)."
+  		redirect_to requests_path(@request)
   	else
-  		render :new, notice: 'Something went wrong - please try again'
+      flash[:error] = "Something went wrong. Please try again."
+  		render :new
   	end
   end
 
@@ -53,15 +56,25 @@ class RequestsController < ApplicationController
 
   # for USER only, not Pro
   def update
-    puts "WE GOT TO THE MAIN UPDATE PART"
     if params[:confirmed]
+      if @current_user
+        @request[:last_updated_by] = @current_user.name
+      elsif @current_professional
+        @request[:last_updated_by] = @current_professional.name
+      end
       Request.find(params[:id]).update_attribute(:status, "Confirmed")
+      flash[:success] = "Your booking is now confirmed. Smooth sailing ahead!"
       redirect_to requests_url
     else
       @request = Request.find(params[:id])
-
+      if @current_user
+        @request[:last_updated_by] = @current_user.name
+      elsif @current_professional
+        @request[:last_updated_by] = @current_professional.name
+      end
       if @request.update(request_params)
-        redirect_to requests_url
+        flash[:success] = "Request details successfully amended."
+        redirect_to requests_path
       else
         render "edit"
       end
@@ -71,7 +84,8 @@ class RequestsController < ApplicationController
   # for USER only, not Pro
   def destroy
     Request.find(params[:id]).delete
-    redirect_to requests_url
+    flash[:success] = "Request successfully cancelled."
+    redirect_to requests_path
   end
 
   private
