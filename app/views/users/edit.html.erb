@@ -39,6 +39,9 @@
         </div>
       <% end %>
 
-      <%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure?" } %>
+      <div class="row margin-top">
+        <%= button_to "Delete Account", { action: "destroy", id: @user.id }, method: :delete, class: "ui button", data: { confirm: "Are you sure?" } %>
+      </div>
     </div>
+  </div>
 </div>
