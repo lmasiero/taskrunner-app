@@ -22,7 +22,11 @@
         <% @professionals.each do |professional| %>
         <tr>
           <td><%= professional.name %></td>
-          <td>East,West</td>
+          <td>
+            <% professional.areas.each do |area| %>
+              <span><%= area.name %>, </span>
+            <% end %>
+          </td>
           <td>Mon-Fri, 9am-5pm</td>
           <td>
           <% professional.services.each do |service| %>

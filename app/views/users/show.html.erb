@@ -46,6 +46,7 @@
 
     <div class="ui hidden divider"></div>
     <div class="ui horizontal divider">or</div>
+    <div class="ui hidden divider"></div>
 
     <!-- SEARCH -->
     <h2 class="centralise">Do a Quick Search</h2>
@@ -63,7 +64,11 @@
         <% @professionals.each do |professional| %>
         <tr>
           <td><%= professional.name %></td>
-          <td>East,West</td>
+          <td>
+            <% professional.areas.each do |area| %>
+              <span><%= area.name %>, </span>
+            <% end %>
+          </td>
           <td>Mon-Fri, 9am-5pm</td>
           <td>
           <% professional.services.each do |service| %>
