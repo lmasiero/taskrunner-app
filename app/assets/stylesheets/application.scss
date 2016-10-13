@@ -15,11 +15,26 @@
 */
 
 
+
 @import "semantic-ui";
 
-*:not(i){
-  font-family: 'Abhaya Libre' !important;
+html, body {
+  height: 100%;
 }
+
+*:not(i){
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Esteban', serif;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin: 0 auto -130px; /* the bottom margin is the negative value of the footer's height */
+}
+
 
 #colorNav .item {
   color: #00b5ad !important;
@@ -82,8 +97,9 @@
   padding-bottom: 5em;
 }
 
-.footer.segment {
-  padding: 5em 0em;
+.footer.segment, .push {
+  // padding: 2em 0em;
+  height: 130px;
 }
 
 #toc {
