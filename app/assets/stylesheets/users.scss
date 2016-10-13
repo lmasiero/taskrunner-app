@@ -17,11 +17,11 @@
 
 #push_down_categories {
   margin-top: 40px;
-  text-align:center;
+  margin-bottom: 50px;
 }
 
 #push_down_content {
-  // margin-bottom: 20px
+  margin-top: 30px
 }
 
 #edit_user_form{
@@ -42,9 +42,13 @@
 }
 
 .numbers {
-  font-weight: bold;
+  font-weight: 900;
 }
 
 .list {
   margin: 0 auto;
+}
+
+.margin-top {
+  margin-top: 30px;
 }

@@ -6,25 +6,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Esteban|Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto:300" rel="stylesheet">
   </head>
 
-  <div class="wrapper">
-    <%= yield %>
-  </div>
+  <body>
 
-  <div class="push"></div>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
 
-  <div class="ui inverted vertical footer segment">
-    <div class="ui center aligned container">
-      <div class="ui inverted section divider"></div>
-      <div class="ui horizontal inverted small divided link list">
-        <a class="item" href="#">Site Map</a>
-        <a class="item" href="#">Contact Us</a>
-        <a class="item" href="#">Terms and Conditions</a>
-        <a class="item" href="#">Privacy Policy</a>
+    <!-- Footer -->
+    <div class="push"></div>
+
+    <div class="ui inverted vertical footer segment">
+      <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        <div class="ui horizontal inverted small divided link list">
+          <a class="item" href="#">Site Map</a>
+          <a class="item" href="#">Contact Us</a>
+          <a class="item" href="#">Terms and Conditions</a>
+          <a class="item" href="#">Privacy Policy</a>
+        </div>
       </div>
     </div>
-  </div>
+
+  </body>
 
 </html>

@@ -1,46 +1,41 @@
 <div id="push_down" class="pusher">
-  <div class="ui main text container">
-    <div class="two wide column"></div>
 
-    <div class="ui right centered grid" id="push_down_content">
-      <div class="ui items">
-        <div class="item">
-          <a class="ui tiny image">
-            <%= image_tag("reviewer.png") %>
-          </a>
-          <div class="content">
-            <div class="description">
-              Your last login was on xxx
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="ui main text container">
+    <div class="ui large header">Browsing category:
+      <span class="ui"><%= @category.name %></span>
     </div>
+
+    <div class="ui hidden divider"></div>
+    <div class="two wide column"></div>
 
     <table class="ui sortable teal table" id="table_search">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Area(s)</th>
-          <th>Usual Availability</th>
-          <th>Services</th>
-          <th>See calendar</th>
+          <th class="center aligned">Name</th>
+          <th class="center aligned">Area(s)</th>
+          <th class="center aligned">Usual Availability</th>
+          <th class="center aligned">Services</th>
+          <th class="center aligned">Book</th>
         </tr>
       </thead>
       <tbody>
         <% @professionals.each do |professional| %>
         <tr>
           <td><%= professional.name %></td>
-          <td>East,West</td>
+          <td>
+            <% professional.areas.each do |area| %>
+              <span><%= area.name %>, </span>
+            <% end %>
+          </td>
           <td>Mon-Fri, 9am-5pm</td>
           <td>
           <% professional.services.each do |service| %>
             <span><%= service.name %>, </span>
           <% end %>
           </td>
-          <td>
+          <td class="center aligned selectable">
             <%= link_to professional_path(professional), :method => :get do%>
-              <i class="calendar icon"></i>
+              <i class="calendar icon teal"></i>
             <% end %>
           </td>
         </tr>

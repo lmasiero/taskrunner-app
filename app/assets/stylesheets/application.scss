@@ -23,11 +23,11 @@ html, body {
 }
 
 *:not(i){
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Esteban', serif;
+  font-family: 'Merriweather', serif;
 }
 
 .wrapper {
@@ -35,6 +35,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto -130px; /* the bottom margin is the negative value of the footer's height */
 }
 
+.centralise {
+  text-align: center;
+}
 
 #colorNav .item {
   color: #00b5ad !important;
@@ -43,6 +46,12 @@ h1, h2, h3, h4, h5, h6 {
 #get_started {
   background-color: #00b5ad !important;
   color: white !important;
+}
+
+#flash_message {
+  margin-top: -47px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 .hidden.menu {
@@ -181,4 +190,42 @@ h1, h2, h3, h4, h5, h6 {
   .center_list{
     margin-left: 0px !important;
   }
+}
+
+.teampage {
+  background-image: url('galaxy.jpg');
+  
+}
+
+.NameCard {
+  width:950px;
+  text-align: center;
+  padding-top:150px !important;
+  padding-bottom:200px;
+  margin: auto; 
+}
+
+.row1 {
+  text-align: center;
+  color: white;
+  width:200px;
+  height:100px;
+  font-size: 3em;
+}
+
+.row1 p{
+  color:white;
+}
+
+.row2 {
+  padding-top: 50px;
+  margin: 0,auto;
+  border-radius: 25px;
+}
+
+
+.row2 img {
+   padding:1px;
+   border:1px solid #021a40;
+
 }
