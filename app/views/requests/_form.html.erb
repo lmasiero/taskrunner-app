@@ -1,9 +1,7 @@
 <% pro_id = request.referer.slice( request.referer.index('/', -3) + 1, request.referer.length ) %>
-
 <h2>
   New service request
 </h2>
-
 <div style="margin-bottom: 50px;">
 <%= simple_form_for @request, remote: true, html: { :class => 'ui form'} do |f| %>
   <div class="field">

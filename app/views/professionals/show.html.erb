@@ -41,7 +41,11 @@
       <!-- SIMPLE_CALENDAR -->
       <div id="requests">
         <%= month_calendar events: @requests do |date, requests| %>
-          <% if (0..2).include?(requests.length) %>
+          <% ary = [] %>
+          <% ary << date %>
+          <% if (@block_times & ary).any? %>
+            <%= link_to date.to_formatted_s(:short), new_block_time_path(:date => date, :professional => @professional), remote: true, class: "not_available disabled" %>
+          <% elsif (0..2).include?(requests.length) %>
             <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true %>
           <% elsif (2..4).include?(requests.length) %>
             <%= link_to date.to_formatted_s(:short), new_request_path(:date => date), remote: true, class: "quite-busy" %>
@@ -86,18 +90,38 @@
           <div class="content">
             <a class="header">Hi, <%=@professional.name%>!</a>
             <div class="description">
-              Your last login was on xxx
+              You are currently logged in as a task runner
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="ui horizontal divider">Welcome back!</div>
+    <div class="ui horizontal divider">Current Calendar View</div>
+    Legend: <div class="ui label" class="not_available">
+              Not Available
+            </div>
+      <h3>Click on a date to make changes <%= @professional.name %>'s services</h3>
+      <!-- SIMPLE_CALENDAR -->
+      <div id="block_time_calendar">
+        <%= month_calendar events: @requests do |date, requests| %>
+          <% ary = [] %>
+          <% ary << date %>
+          <% if (@block_times & ary).any? %>
+            <%= link_to date.to_formatted_s(:short), new_block_time_path(:date => date, :professional => @professional), remote: true, class: "not_available" %>
+          <% elsif (0..2).include?(requests.length) %>
+            <%= link_to date.to_formatted_s(:short), new_block_time_path(:date => date, :professional => @professional), remote: true %>
+          <% elsif (2..4).include?(requests.length) %>
+            <%= link_to date.to_formatted_s(:short), new_block_time_path(:date => date, :professional => @professional), remote: true, class: "quite-busy" %>
+          <% else %>
+            <%= link_to date.to_formatted_s(:short), new_block_time_path(:date => date, :professional => @professional), remote: true, class: "very-busy" %>
+          <% end %>
+        <% end %>
+      </div>
+    <div id="block_time_form" style="display:none;"></div>
+
   </div>
 </div>
 
-Summary of Pro's profile
-- category and services
 
 
 <% end %>

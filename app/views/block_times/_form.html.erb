@@ -1,0 +1,31 @@
+<% pro_id = request.referer.slice( request.referer.index('/', -3) + 1, request.referer.length ) %>
+
+<h2>
+  Edit date availability
+</h2>
+
+<div style="margin-bottom: 50px;">
+<%= simple_form_for @block_time, remote: true, html: { :class => 'ui form'} do |f| %>
+  <p> <strong>Current status:</strong>
+    <% if (@professional.block_times & @block_time_passed).any? %>
+      <span style="color:red">Currently blocked out (unavailable)</span>
+    <% else %>
+      <span style="color:green">Available</span>
+    <% end %>
+  </p>
+  <div class="field">
+    <% if (@professional.block_times & @block_time_passed).any? %>
+      <%= link_to "Make Available", block_time_path(@block_time_passed.pluck(:id)), method: :delete%>
+    <% else %>
+      <%= f.label :block_date, label: "Choose to block out a whole day (users will not be able to make appointment requests on that day)" %><br>
+      <%= f.date_field :block_date %>
+    <% end %>
+  </div>
+
+  <%= f.hidden_field :professional_id, :value => pro_id %>
+  <% if (@professional.block_times & @block_time_passed).any? %>
+  <% else %>
+    <%= f.button :submit, :class => "ui teal button" %>
+  <% end %>
+<% end %>
+</div>

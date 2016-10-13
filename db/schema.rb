@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012074118) do
+ActiveRecord::Schema.define(version: 20161013063457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 20161012074118) do
     t.index ["professional_id"], name: "index_areas_professionals_on_professional_id", using: :btree
   end
 
+  create_table "block_times", force: :cascade do |t|
+    t.date     "block_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "block_times_professionals", id: false, force: :cascade do |t|
+    t.integer "professional_id", null: false
+    t.integer "block_time_id",   null: false
+    t.index ["block_time_id"], name: "index_block_times_professionals_on_block_time_id", using: :btree
+    t.index ["professional_id"], name: "index_block_times_professionals_on_professional_id", using: :btree
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -39,7 +52,7 @@ ActiveRecord::Schema.define(version: 20161012074118) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "category_id"
-    t.integer  "mobile_number"
+    t.string   "mobile_number"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -74,7 +87,7 @@ ActiveRecord::Schema.define(version: 20161012074118) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "mobile_number"
+    t.string   "mobile_number"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

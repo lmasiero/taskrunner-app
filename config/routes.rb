@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
-  resources :sessions, :users, :categories, :professionals
+  resources :sessions, :users, :categories, :professionals, :block_times
   resources :professionals do
     resources :services
   end

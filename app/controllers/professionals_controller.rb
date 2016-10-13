@@ -18,8 +18,11 @@ class ProfessionalsController < ApplicationController
       @current_user = current_user
       @requests = @professional.requests
       @services = @professional.services
+      @block_times = @professional.block_times.pluck(:block_date)
     elsif current_professional
-      @current_professional = current_professional
+      @professional = current_professional
+      @requests = @professional.requests
+      @block_times = @professional.block_times.pluck(:block_date)
     end
   end
 
