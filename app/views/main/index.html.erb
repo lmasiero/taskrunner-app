@@ -1,25 +1,23 @@
 <div class="ui basic modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Choose Sign Up
-  </div>
+
   <div class="image content">
     <div class="image">
       <i class="users icon"></i>
     </div><br>
     <div class="description">
-      <h3>Are you signing up as a service provider or seeker?</h3>
+      <h3>What do you want to do?</h3>
     </div>
   </div>
+
   <div class="actions">
-    <div class="two fluid ui inverted buttons">
+    <div class="two ui inverted buttons">
       <div class="ui basic inverted button">
         <i class="user icon"></i>
-        <%= link_to "Service Seeker", new_user_path, :class => "signup_choice", :method => :get %>
+        <%= link_to "Look for Services", new_user_path, :class => "signup_choice", :method => :get %>
       </div>
       <div class="ui basic inverted button">
         <i class="doctor icon"></i>
-        <%= link_to "Service Provider", new_professional_path, :class => "signup_choice", :method => :get %>
+        <%= link_to "Provide Services", new_professional_path, :class => "signup_choice", :method => :get %>
       </div>
     </div>
   </div>
@@ -33,10 +31,10 @@
     <%= link_to "Careers", root_path, :class => "item", :method => :get %>
     <div class="right menu">
       <div class="item">
-        <%= link_to "Log In", login_path, :id => "login", :class => "ui primary button", :method => :get %>
+        <%= link_to "LOG IN", login_path, :id => "login", :class => "ui primary button", :method => :get %>
       </div>
       <div class="item">
-        <a class="ui primary button signup">Sign Up</a>
+        <a class="ui primary button signup">SIGN UP FREE</a>
       </div>
     </div>
   </div>
@@ -66,8 +64,8 @@
         <%= link_to "Company", root_path, :class => "item", :method => :get %>
         <%= link_to "Careers", root_path, :class => "item", :method => :get %>
         <div class="right item">
-          <%= button_to "Log In", login_path, :id => "login", :class => "ui inverted button", :method => :get %>
-          <a class="ui inverted teal button signup">Sign Up</a>
+          <%= button_to "LOG IN", login_path, :id => "login", :class => "ui inverted button", :method => :get %>
+          <a class="ui inverted teal button signup">SIGN UP FREE</a>
         </div>
       </div>
     </div>
