@@ -23,11 +23,11 @@ html, body {
 }
 
 *:not(i){
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Esteban', serif;
+  font-family: 'Merriweather', serif;
 }
 
 .wrapper {
@@ -35,6 +35,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto -130px; /* the bottom margin is the negative value of the footer's height */
 }
 
+.centralise {
+  text-align: center;
+}
 
 #colorNav .item {
   color: #00b5ad !important;
@@ -43,6 +46,11 @@ h1, h2, h3, h4, h5, h6 {
 #get_started {
   background-color: #00b5ad !important;
   color: white !important;
+}
+
+#flash_message {
+  margin-top: 100px;
+  text-align: center;
 }
 
 .hidden.menu {

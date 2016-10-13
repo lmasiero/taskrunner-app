@@ -6,12 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto:300" rel="stylesheet">
   </head>
 
 
   <body>
 
+    <!-- NAVBAR for professional -->
     <div id="fixedUser" class="ui fixed inverted menu">
       <div class="ui vertically container">
         <%= link_to image_tag("running.png", :alt => "running_man"), root_path, :class => 'header item', :method => :get %>
