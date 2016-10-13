@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Account registered. Welcome to our community :)"
       redirect_to @user
     else
       render 'new'
@@ -49,10 +50,8 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to root_url, notice: 'User was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    flash[:danger] = "Account deleted. We still hope to see you again soon."
+    redirect_to root_url
   end
 
   private

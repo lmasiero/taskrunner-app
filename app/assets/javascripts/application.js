@@ -55,7 +55,15 @@ $(document).ready(function() {
      }
     });
 
-    $('.ui.basic.modal').modal('attach events', '.signup', 'show')
+    $('.ui.basic.modal').modal('attach events', '.signup', 'show');
+
+    $('.message .close').on('click', function() {
+      $(this)
+      .closest('.message')
+      .transition('fade')
+      ;
+    })
+    ;
 
   });
 
